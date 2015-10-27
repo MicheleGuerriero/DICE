@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<it.polimi.modaclouds.resourcemodel.cloud:Oryx2
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:it.polimi.modaclouds.resourcemodel.cloud="http://cloud/1.0"
+    oryxType="cloudify_dsl_1_0">
+  <usesHadoopCluster>
+    <hasMasterNode
+        name="master"
+        cpu="4"
+        ram="16"
+        subnet_id="subnetid"
+        access_key_id="acckeyid"
+        url="urllllll"
+        ce_certificate="certificate"
+        net_uuid="netuuuid"
+        key_uuid="keyuuuuid"
+        wait_started_interval="3"
+        wait_started_timeout="30"
+        user="username"
+        api_uuid="apiid"
+        password="1234"
+        customer="customer"
+        masterType="masternode">
+      <contains_config
+          name="config"
+          type="config">
+        <relationships
+            type="config_in_master"
+            target="master"/>
+        <relationships
+            type="config_on_worker"
+            target="worker"/>
+      </contains_config>
+      <contains_master_chef
+          name="master_stack"
+          type="chef_node">
+        <relationships
+            type="cloudify.relationships.contained_in"
+            target="master"/>
+        <relationships
+            type="stack_on_config"
+            target="config"/>
+        <chef_cook_books>- 'recipe[apt::default]'</chef_cook_books>
+        <chef_cook_books>- 'recipe[java::default]'</chef_cook_books>
+        <chef_cook_books>- 'recipe[hadoop::hadoop_hdfs_namenode]'</chef_cook_books>
+        <chef_cook_books>- 'recipe[hadoop::hadoop_yarn_resourcemanager]'</chef_cook_books>
+        <chef_cook_books>- 'recipe[hadoop::hadoop_mapreduce_historyserver]'</chef_cook_books>
+        <chef_cook_books>- 'recipe[hadoop::zookeeper_server]'</chef_cook_books>
+        <chef_cook_books>- 'recipe[hadoop::spark_master]'</chef_cook_books>
+        <chef_cook_books>- 'recipe[apache_kafka::default]'</chef_cook_books>
+        <chef_cook_books>- 'recipe[collectd-ng::default]'</chef_cook_books>
+      </contains_master_chef>
+      <hasOryxRunner
+          name="oryx"
+          type="cloudify.nodes.ApplicationServer"
+          derived_from="Cloudify.chef.nodes.ApplicationServer">
+        <relationships
+            type="cloudify.relationships.contained_in"
+            target="master"/>
+        <relationships
+            type="oryx_on_master"
+            target="master_stack"/>
+        <relationships
+            type="cloudify.relationships.depends_on"
+            target="worker_stack"/>
+      </hasOryxRunner>
+    </hasMasterNode>
+    <hasSlaves
+        name="worker"
+        cpu="16"
+        ram="32"
+        disk_size="200"
+        subnet_id="subnetid"
+        tag_Name=""
+        access_key_id="acesskeyiddd"
+        url="url"
+        ce_certificate="certificateee"
+        net_uuid="netuuid"
+        key_uuid="keyuuid"
+        wait_started_interval="3"
+        wait_started_timeout="30"
+        api_uuid="apiuudiiii"
+        password="123456"
+        customer="customer"
+        slaveType="WorkerNode"
+        instances="5">
+      <contains_worker_chef
+          name="worker_stack"
+          type="workerChef">
+        <relationships
+            type="cloudify.relationships.contained_in"
+            target="worker"/>
+        <relationships
+            type="stack_on_config"
+            target="config"/>
+        <chef_cook_books>- 'recipe[apt::default]'</chef_cook_books>
+        <chef_cook_books>- 'recipe[java::default]'</chef_cook_books>
+        <chef_cook_books>- 'recipe[hadoop::hadoop_hdfs_datanode]'</chef_cook_books>
+        <chef_cook_books>- 'recipe[hadoop::hadoop_yarn_nodemanager]'</chef_cook_books>
+        <chef_cook_books>- 'recipe[hadoop::zookeeper_server]'</chef_cook_books>
+        <chef_cook_books>- 'recipe[hadoop::spark_worker]'</chef_cook_books>
+        <chef_cook_books>- 'recipe[apache_kafka::default]'</chef_cook_books>
+        <chef_cook_books>- 'recipe[collectd-ng::default]'</chef_cook_books>
+      </contains_worker_chef>
+    </hasSlaves>
+  </usesHadoopCluster>
+  <imports>http://yahoo.yaml</imports>
+  <imports>http://google.yaml</imports>
+  <hasinputs
+      name="chef_version"
+      value="{}"/>
+  <hasinputs
+      name="chef_server"
+      value="{}"/>
+  <hasinputs
+      name="chef_validation_user"
+      value="{}"/>
+  <hasoutputs
+      name="mapred_job_tracker">
+    <value>master_stack</value>
+    <value>chef_attributes</value>
+    <value>hadoop</value>
+    <value>mapred_site</value>
+  </hasoutputs>
+  <hasoutputs
+      name="mapred_jobhistory">
+    <value>master_stack</value>
+    <value>chef_attributes</value>
+    <value>hadoop</value>
+    <value>mapred_site</value>
+  </hasoutputs>
+</it.polimi.modaclouds.resourcemodel.cloud:Oryx2>

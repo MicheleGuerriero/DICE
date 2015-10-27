@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/modaclouds-resourcemodel/src" modelPluginID="modaclouds-resourcemodel"
+    modelName="Cloud" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>Cloud.ecore</foreignModel>
+  <genPackages prefix="Cloud" basePackage="it.polimi.modaclouds.resourcemodel" disposableProviderFactory="true"
+      ecorePackage="Cloud.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Cloud.ecore#//VirtualHWResourceType">
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//VirtualHWResourceType/cpu"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//VirtualHWResourceType/memory"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//VirtualHWResourceType/storage"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Cloud.ecore#//CloudResourceType">
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudResourceType/compute"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudResourceType/cloudstorage"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Cloud.ecore#//CloudPlatformType">
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudPlatformType/frontend"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudPlatformType/middleware"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudPlatformType/backend"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudPlatformType/database"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudPlatformType/storage"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudPlatformType/queue"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudPlatformType/cache"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Cloud.ecore#//DatabaseType">
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//DatabaseType/relational"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//DatabaseType/nosql"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Cloud.ecore#//CloudStorageType">
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudStorageType/blobstorage"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudStorageType/filesystem"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Cloud.ecore#//OSType">
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//OSType/linux"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//OSType/windows"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//OSType/mac"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//OSType/undefined"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Cloud.ecore#//CostUnitType">
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CostUnitType/per_hour"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CostUnitType/per_GBmonth"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CostUnitType/per_million_I_O"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CostUnitType/per_1year"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CostUnitType/per_3year"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CostUnitType/per_3year_hour"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CostUnitType/per_GBout"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CostUnitType/per_GBmonth_consumed"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CostUnitType/per_GB_consumed"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Cloud.ecore#//ScalingMetricType">
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//ScalingMetricType/CPU_utilization"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//ScalingMetricType/TrafficLoad"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//ScalingMetricType/Memory"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Cloud.ecore#//ScalingOperatorType">
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//ScalingOperatorType/GreaterThan"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//ScalingOperatorType/LowerThan"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//ScalingOperatorType/GreaterOrEquals"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//ScalingOperatorType/LowerOrEquals"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//ScalingOperatorType/EqualsTo"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Cloud.ecore#//CloudElementType">
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudElementType/platform"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudElementType/resource"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudElementType/software"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Cloud.ecore#//ScalingType">
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//ScalingType/ScaleIN"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//ScalingType/ScaleOUT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Cloud.ecore#//CloudSoftwareType">
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudSoftwareType/REST"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudSoftwareType/SOAP"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Cloud.ecore#//CloudPlatformPropertyName">
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudPlatformPropertyName/ssdOptimized"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudPlatformPropertyName/maxConnections"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudPlatformPropertyName/maxRequests"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudPlatformPropertyName/multiAzReplicas"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudPlatformPropertyName/orderPreserving"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudPlatformPropertyName/replicas"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudPlatformPropertyName/requestSize"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudPlatformPropertyName/delay"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudPlatformPropertyName/storage"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudPlatformPropertyName/multiplyingFactor"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudPlatformPropertyName/maxRollbackHours"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudPlatformPropertyName/maxEntrySize"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudPlatformPropertyName/replicasChangeable"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudPlatformPropertyName/replicasPayedSingularly"/>
+      <genEnumLiterals ecoreEnumLiteral="Cloud.ecore#//CloudPlatformPropertyName/dataReplicas"/>
+    </genEnums>
+    <genClasses image="false" ecoreClass="Cloud.ecore#//Provider">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//Provider/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//Provider/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Cloud.ecore#//CloudProvider">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//CloudProvider/providesCloudService"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Cloud.ecore#//CloudService">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//CloudService/hasSLA"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//CloudService/hasScalingPolicy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//CloudService/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//CloudService/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Cloud.ecore#//ApplicationServiceProvider">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//ApplicationServiceProvider/providesCloudSoftware"/>
+    </genClasses>
+    <genClasses ecoreClass="Cloud.ecore#//CostProfile">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//CostProfile/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//CostProfile/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cloud.ecore#//CostProfile/composedOf"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//CostProfile/associatedToCloudElement"/>
+    </genClasses>
+    <genClasses ecoreClass="Cloud.ecore#//ServiceLevelAgreementTemplate">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cloud.ecore#//ServiceLevelAgreementTemplate/definedBy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//ServiceLevelAgreementTemplate/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//ServiceLevelAgreementTemplate/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Cloud.ecore#//Requirement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//Requirement/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//Requirement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//Requirement/description"/>
+    </genClasses>
+    <genClasses ecoreClass="Cloud.ecore#//ScalingPolicy">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//ScalingPolicy/definedOn"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//ScalingPolicy/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//ScalingPolicy/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//ScalingPolicy/action"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cloud.ecore#//ScalingPolicy/composedOf"/>
+    </genClasses>
+    <genClasses ecoreClass="Cloud.ecore#//ResourcePool">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cloud.ecore#//ResourcePool/composedOf"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//ResourcePool/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//ResourcePool/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//ResourcePool/hasAllocationProfile"/>
+    </genClasses>
+    <genClasses ecoreClass="Cloud.ecore#//IaaS_Service">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cloud.ecore#//IaaS_Service/composedOf"/>
+    </genClasses>
+    <genClasses ecoreClass="Cloud.ecore#//PaaS_Service">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cloud.ecore#//PaaS_Service/composedOf"/>
+    </genClasses>
+    <genClasses ecoreClass="Cloud.ecore#//SaaS_Service">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cloud.ecore#//SaaS_Service/composedOf"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Cloud.ecore#//CloudResource">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//CloudResource/inLocation"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//CloudResource/from"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cloud.ecore#//CloudResource/composedOf"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//CloudResource/resourceType"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Cloud.ecore#//CloudPlatform">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//CloudPlatform/runsOnCloudResource"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//CloudPlatform/platformType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//CloudPlatform/language"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//CloudPlatform/technology"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//CloudPlatform/runsOnResourcePool"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//CloudPlatform/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="Cloud.ecore#//CloudSoftware">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//CloudSoftware/deployedOnCloudPlatform"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//CloudSoftware/runsOnCloudResource"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//CloudSoftware/softwareType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//CloudSoftware/runsOnResourcePool"/>
+    </genClasses>
+    <genClasses ecoreClass="Cloud.ecore#//Backend"/>
+    <genClasses ecoreClass="Cloud.ecore#//Middleware"/>
+    <genClasses ecoreClass="Cloud.ecore#//Queue"/>
+    <genClasses ecoreClass="Cloud.ecore#//Cache"/>
+    <genClasses ecoreClass="Cloud.ecore#//Storage"/>
+    <genClasses ecoreClass="Cloud.ecore#//Frontend"/>
+    <genClasses image="false" ecoreClass="Cloud.ecore#//Location">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//Location/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//Location/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Cloud.ecore#//Region"/>
+    <genClasses ecoreClass="Cloud.ecore#//SubRegion">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//SubRegion/inRegion"/>
+    </genClasses>
+    <genClasses ecoreClass="Cloud.ecore#//VirtualArea"/>
+    <genClasses ecoreClass="Cloud.ecore#//REST_Software"/>
+    <genClasses ecoreClass="Cloud.ecore#//SOAP_Software"/>
+    <genClasses ecoreClass="Cloud.ecore#//Link">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//Link/to"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//Link/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//Link/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//Link/latency"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//Link/throughput"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//Link/cost"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//Link/reverseLinkToB"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//Link/reverseLinkToA"/>
+    </genClasses>
+    <genClasses ecoreClass="Cloud.ecore#//AllocationProfile">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//AllocationProfile/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//AllocationProfile/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cloud.ecore#//AllocationProfile/composedOf"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//AllocationProfile/relatedToResourcePool"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Cloud.ecore#//VirtualHWResource">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//VirtualHWResource/has"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//VirtualHWResource/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//VirtualHWResource/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//VirtualHWResource/processingRate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//VirtualHWResource/numberOfReplicas"/>
+    </genClasses>
+    <genClasses ecoreClass="Cloud.ecore#//V_CPU"/>
+    <genClasses ecoreClass="Cloud.ecore#//V_Memory">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//V_Memory/size"/>
+    </genClasses>
+    <genClasses ecoreClass="Cloud.ecore#//V_Storage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//V_Storage/size"/>
+    </genClasses>
+    <genClasses ecoreClass="Cloud.ecore#//EfficiencyProfile">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//EfficiencyProfile/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//EfficiencyProfile/period"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//EfficiencyProfile/efficiency"/>
+    </genClasses>
+    <genClasses ecoreClass="Cloud.ecore#//Compute">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//Compute/usesCloudStorage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//Compute/OS"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Cloud.ecore#//CloudStorage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//CloudStorage/storageType"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Cloud.ecore#//Database">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//Database/usesCloudStorage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//Database/DBType"/>
+    </genClasses>
+    <genClasses ecoreClass="Cloud.ecore#//RelationalDB"/>
+    <genClasses ecoreClass="Cloud.ecore#//NoSQL_DB"/>
+    <genClasses ecoreClass="Cloud.ecore#//FilesystemStorage"/>
+    <genClasses ecoreClass="Cloud.ecore#//BlobStorage"/>
+    <genClasses ecoreClass="Cloud.ecore#//Cost">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//Cost/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//Cost/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//Cost/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//Cost/unit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//Cost/period"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//Cost/associatedToCloudElement"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//Cost/definedOn"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//Cost/lowerBound"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//Cost/upperBound"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//Cost/region"/>
+    </genClasses>
+    <genClasses ecoreClass="Cloud.ecore#//FreeQuota">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//FreeQuota/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//FreeQuota/unit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//FreeQuota/amount"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//FreeQuota/associatedToCloudElement"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//FreeQuota/definedOn"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Cloud.ecore#//CloudElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//CloudElement/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//CloudElement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//CloudElement/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//CloudElement/CloudElementA"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//CloudElement/CloudElementB"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//CloudElement/hasCostProfile"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//CloudElement/hasCost"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//CloudElement/hasFreeQuota"/>
+    </genClasses>
+    <genClasses ecoreClass="Cloud.ecore#//ScalingRule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//ScalingRule/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//ScalingRule/metric"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//ScalingRule/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//ScalingRule/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="Cloud.ecore#//Allocation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//Allocation/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//Allocation/period"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//Allocation/numberOfInstances"/>
+    </genClasses>
+    <genClasses ecoreClass="Cloud.ecore#//CloudPlatformProperty">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cloud.ecore#//CloudPlatformProperty/platform"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//CloudPlatformProperty/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cloud.ecore#//CloudPlatformProperty/value"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

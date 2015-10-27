@@ -1,0 +1,1095 @@
+@prefix atxa-rse-eclipse: <http://www.architexa.com/rdf/rse-eclipse#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix atxa-jdt-wkspc: <http://www.architexa.com/rdf/jdt-wkspc#> .
+@prefix atxa-core: <http://www.architexa.com/rdf/core#> .
+@prefix atxa: <http://www.architexa.com/rdf/> .
+@prefix atxa-jdt: <http://www.architexa.com/rdf/jdt#> .
+
+<http://www.architexa.com/rdf/rse-eclipse#Class.atxa> a atxa-core:reloFile .
+
+atxa:DetailNode atxa-core:detailLevel "0" .
+
+atxa-core:docRoot atxa-core:browseModel "com.architexa.diagrams.relo.jdt/com.architexa.diagrams.relo.jdt.browse.ClassStrucBrowseModel" ;
+	atxa-core:contains _:node19sgu385rx1 .
+
+_:node19sgu385rx1 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#(default)> ;
+	atxa-core:posX "579" ;
+	atxa-core:posY "182" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#(default)> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#$WordCount> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountReducer> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountPartitioner> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountMapper> .
+
+_:node19sgu385rx1 atxa-core:contains _:node19sgu385rx17 .
+
+_:node19sgu385rx17 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCount> ;
+	atxa-core:posX "585" ;
+	atxa-core:posY "634" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#$WordCount> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#$WordCount.main(String[],)> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCount.run(String[],)> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCount.WordCount()> .
+
+_:node19sgu385rx18 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node19sgu385rx17 ;
+	rdf:object _:node19sgu385rx19 ;
+	atxa-core:bendpoint _:node19sgs294bx1096 .
+
+_:node19sgs294bx1096 atxa-core:bpLocation "673,-188" ;
+	atxa-core:bpIndex "0" .
+
+_:node19sgu385rx18 atxa-core:bendpoint _:node19sgs294bx1097 .
+
+_:node19sgs294bx1097 atxa-core:bpLocation "771,-188" ;
+	atxa-core:bpIndex "1" .
+
+_:node19sgu385rx22 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node19sgu385rx17 ;
+	rdf:object _:node19sgu385rx23 ;
+	atxa-core:bendpoint _:node19sgs294bx1098 .
+
+_:node19sgs294bx1098 atxa-core:bpLocation "673,-153" ;
+	atxa-core:bpIndex "0" .
+
+_:node19sgu385rx22 atxa-core:bendpoint _:node19sgs294bx1099 .
+
+_:node19sgs294bx1099 atxa-core:bpLocation "69,-153" ;
+	atxa-core:bpIndex "1" .
+
+_:node19sgu385rx17 atxa-core:contains _:node19sgu385rx26 .
+
+_:node19sgu385rx26 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCount.main(String[],)> ;
+	atxa-core:posX "586" ;
+	atxa-core:posY "653" .
+
+_:node19sgu385rx27 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx26 ;
+	rdf:object _:node19sgu385rx28 .
+
+_:node19sgu385rx17 atxa-core:contains _:node19sgu385rx29 .
+
+_:node19sgu385rx29 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCount.run(String[],)> ;
+	atxa-core:posX "586" ;
+	atxa-core:posY "670" .
+
+_:node19sgu385rx30 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx29 ;
+	rdf:object _:node19sgu385rx31 .
+
+_:node19sgu385rx32 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx29 ;
+	rdf:object _:node19sgu385rx33 .
+
+_:node19sgu385rx34 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx29 ;
+	rdf:object _:node19sgu385rx35 .
+
+_:node19sgu385rx36 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx29 ;
+	rdf:object _:node19sgu385rx37 .
+
+_:node19sgu385rx38 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx29 ;
+	rdf:object _:node19sgu385rx39 .
+
+_:node19sgu385rx40 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx29 ;
+	rdf:object _:node19sgu385rx41 .
+
+_:node19sgu385rx42 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx29 ;
+	rdf:object _:node19sgu385rx43 .
+
+_:node19sgu385rx44 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx29 ;
+	rdf:object _:node19sgu385rx45 .
+
+_:node19sgu385rx46 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx29 ;
+	rdf:object _:node19sgu385rx47 .
+
+_:node19sgu385rx48 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx29 ;
+	rdf:object _:node19sgu385rx49 .
+
+_:node19sgu385rx50 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx29 ;
+	rdf:object _:node19sgu385rx51 .
+
+_:node19sgu385rx52 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx29 ;
+	rdf:object _:node19sgu385rx53 .
+
+_:node19sgu385rx54 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx29 ;
+	rdf:object _:node19sgu385rx55 .
+
+_:node19sgu385rx56 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx29 ;
+	rdf:object _:node19sgu385rx57 .
+
+_:node19sgu385rx58 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx29 ;
+	rdf:object _:node19sgu385rx59 .
+
+_:node19sgu385rx60 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx29 ;
+	rdf:object _:node19sgu385rx61 .
+
+_:node19sgu385rx62 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx29 ;
+	rdf:object _:node19sgu385rx63 .
+
+_:node19sgu385rx17 atxa-core:contains _:node19sgu385rx64 .
+
+_:node19sgu385rx64 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCount.WordCount()> ;
+	atxa-core:posX "586" ;
+	atxa-core:posY "687" .
+
+_:node19sgu385rx1 atxa-core:contains _:node19sgu385rx65 .
+
+_:node19sgu385rx65 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountReducer> ;
+	atxa-core:posX "732" ;
+	atxa-core:posY "208" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#$WordCountReducer> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#$WordCountReducer.reduce(Object,Iterator,OutputCollector,Reporter,)> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountReducer.reduce(Text,Iterator,OutputCollector,Reporter,)> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountReducer.WordCountReducer()> .
+
+_:node19sgu385rx66 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node19sgu385rx65 ;
+	rdf:object _:node19sgu385rx4 ;
+	atxa-core:bendpoint _:node19sgs294bx1100 .
+
+_:node19sgs294bx1100 atxa-core:bpLocation "935,-37" ;
+	atxa-core:bpIndex "0" .
+
+_:node19sgu385rx66 atxa-core:bendpoint _:node19sgs294bx1101 .
+
+_:node19sgs294bx1101 atxa-core:bpLocation "1643,-37" ;
+	atxa-core:bpIndex "1" .
+
+_:node19sgu385rx69 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node19sgu385rx65 ;
+	rdf:object _:node19sgu385rx70 ;
+	atxa-core:bendpoint _:node19sgs294bx1102 .
+
+_:node19sgs294bx1102 atxa-core:bpLocation "935,165" ;
+	atxa-core:bpIndex "0" .
+
+_:node19sgu385rx69 atxa-core:bendpoint _:node19sgs294bx1103 .
+
+_:node19sgs294bx1103 atxa-core:bpLocation "1245,165" ;
+	atxa-core:bpIndex "1" .
+
+_:node19sgu385rx65 atxa-core:contains _:node19sgu385rx73 .
+
+_:node19sgu385rx73 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountReducer.reduce(Object,Iterator,OutputCollector,Reporter,)> ;
+	atxa-core:posX "733" ;
+	atxa-core:posY "227" .
+
+_:node19sgu385rx74 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx73 ;
+	rdf:object _:node19sgu385rx75 .
+
+_:node19sgu385rx65 atxa-core:contains _:node19sgu385rx75 .
+
+_:node19sgu385rx75 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountReducer.reduce(Text,Iterator,OutputCollector,Reporter,)> ;
+	atxa-core:posX "733" ;
+	atxa-core:posY "244" .
+
+_:node19sgu385rx76 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx75 ;
+	rdf:object _:node19sgu385rx77 .
+
+_:node19sgu385rx78 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx75 ;
+	rdf:object _:node19sgu385rx79 .
+
+_:node19sgu385rx80 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx75 ;
+	rdf:object _:node19sgu385rx81 .
+
+_:node19sgu385rx82 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx75 ;
+	rdf:object _:node19sgu385rx83 .
+
+_:node19sgu385rx84 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx75 ;
+	rdf:object _:node19sgu385rx85 .
+
+_:node19sgu385rx65 atxa-core:contains _:node19sgu385rx86 .
+
+_:node19sgu385rx86 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountReducer.WordCountReducer()> ;
+	atxa-core:posX "733" ;
+	atxa-core:posY "261" .
+
+_:node19sgu385rx87 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx86 ;
+	rdf:object _:node19sgu385rx88 .
+
+_:node19sgu385rx1 atxa-core:contains _:node19sgu385rx89 .
+
+_:node19sgu385rx89 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountPartitioner> ;
+	atxa-core:posX "1698" ;
+	atxa-core:posY "631" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#$WordCountPartitioner> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#$WordCountPartitioner.getPartition(Object,Object,int,)> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountPartitioner.getPartition(Text,IntWritable,int,)> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountPartitioner.WordCountPartitioner()> .
+
+_:node19sgu385rx90 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node19sgu385rx89 ;
+	rdf:object _:node19sgu385rx4 ;
+	atxa-core:bendpoint _:node19sgs294bx1104 .
+
+_:node19sgs294bx1104 atxa-core:bpLocation "1840,-37" ;
+	atxa-core:bpIndex "0" .
+
+_:node19sgu385rx90 atxa-core:bendpoint _:node19sgs294bx1105 .
+
+_:node19sgs294bx1105 atxa-core:bpLocation "1643,-37" ;
+	atxa-core:bpIndex "1" .
+
+_:node19sgu385rx93 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node19sgu385rx89 ;
+	rdf:object _:node19sgu385rx94 ;
+	atxa-core:bendpoint _:node19sgs294bx1106 .
+
+_:node19sgs294bx1106 atxa-core:bpLocation "1840,166" ;
+	atxa-core:bpIndex "0" .
+
+_:node19sgu385rx93 atxa-core:bendpoint _:node19sgs294bx1107 .
+
+_:node19sgs294bx1107 atxa-core:bpLocation "1778,166" ;
+	atxa-core:bpIndex "1" .
+
+_:node19sgu385rx89 atxa-core:contains _:node19sgu385rx97 .
+
+_:node19sgu385rx97 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountPartitioner.getPartition(Object,Object,int,)> ;
+	atxa-core:posX "1699" ;
+	atxa-core:posY "650" .
+
+_:node19sgu385rx98 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx97 ;
+	rdf:object _:node19sgu385rx99 .
+
+_:node19sgu385rx89 atxa-core:contains _:node19sgu385rx99 .
+
+_:node19sgu385rx99 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountPartitioner.getPartition(Text,IntWritable,int,)> ;
+	atxa-core:posX "1699" ;
+	atxa-core:posY "667" .
+
+_:node19sgu385rx89 atxa-core:contains _:node19sgu385rx100 .
+
+_:node19sgu385rx100 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountPartitioner.WordCountPartitioner()> ;
+	atxa-core:posX "1699" ;
+	atxa-core:posY "684" .
+
+_:node19sgu385rx101 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx100 ;
+	rdf:object _:node19sgu385rx88 .
+
+_:node19sgu385rx1 atxa-core:contains _:node19sgu385rx102 .
+
+_:node19sgu385rx102 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut> ;
+	atxa-core:posX "969" ;
+	atxa-core:posY "379" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$DBOutput> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$WordCountMapperDBOut> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$WordCountReducerDBOut> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut.main(String[],)> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut.run(String,String,)> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut.WordCountDBOut()> .
+
+_:node19sgu385rx102 atxa-core:contains _:node19sgu385rx103 .
+
+_:node19sgu385rx103 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$DBOutput> ;
+	atxa-core:posX "970" ;
+	atxa-core:posY "449" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$DBOutput> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$DBOutput.DBOutput(DBOutput,)> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$DBOutput.getText()> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$DBOutput.setNo(int,)> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$DBOutput.setText(String,)> .
+
+_:node19sgu385rx103 atxa-core:contains _:node19sgu385rx104 .
+
+_:node19sgu385rx104 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$DBOutput.DBOutput(DBOutput,)> ;
+	atxa-core:posX "971" ;
+	atxa-core:posY "468" .
+
+_:node19sgu385rx103 atxa-core:contains _:node19sgu385rx105 .
+
+_:node19sgu385rx105 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$DBOutput.getText()> ;
+	atxa-core:posX "971" ;
+	atxa-core:posY "485" .
+
+_:node19sgu385rx103 atxa-core:contains _:node19sgu385rx106 .
+
+_:node19sgu385rx106 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$DBOutput.setNo(int,)> ;
+	atxa-core:posX "971" ;
+	atxa-core:posY "502" .
+
+_:node19sgu385rx103 atxa-core:contains _:node19sgu385rx107 .
+
+_:node19sgu385rx107 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$DBOutput.setText(String,)> ;
+	atxa-core:posX "971" ;
+	atxa-core:posY "519" .
+
+_:node19sgu385rx102 atxa-core:contains _:node19sgu385rx108 .
+
+_:node19sgu385rx108 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$WordCountMapperDBOut> ;
+	atxa-core:posX "970" ;
+	atxa-core:posY "542" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$WordCountMapperDBOut> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$WordCountMapperDBOut.<clinit\>()> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$WordCountMapperDBOut.map(LongWritable,Text,OutputCollector,Reporter,)> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$WordCountMapperDBOut.map(Object,Object,OutputCollector,Reporter,)> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$WordCountMapperDBOut.one> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$WordCountMapperDBOut.text> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$WordCountMapperDBOut.WordCountMapperDBOut()> .
+
+_:node19sgu385rx108 atxa-core:contains _:node19sgu385rx109 .
+
+_:node19sgu385rx109 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$WordCountMapperDBOut.<clinit\>()> ;
+	atxa-core:posX "971" ;
+	atxa-core:posY "595" .
+
+_:node19sgu385rx108 atxa-core:contains _:node19sgu385rx110 .
+
+_:node19sgu385rx110 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$WordCountMapperDBOut.map(LongWritable,Text,OutputCollector,Reporter,)> ;
+	atxa-core:posX "971" ;
+	atxa-core:posY "612" .
+
+_:node19sgu385rx111 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx110 ;
+	rdf:object _:node19sgu385rx107 .
+
+_:node19sgu385rx112 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx110 ;
+	rdf:object _:node19sgu385rx113 .
+
+_:node19sgu385rx114 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx110 ;
+	rdf:object _:node19sgu385rx79 .
+
+_:node19sgu385rx115 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx110 ;
+	rdf:object _:node19sgu385rx116 .
+
+_:node19sgu385rx117 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx110 ;
+	rdf:object _:node19sgu385rx118 .
+
+_:node19sgu385rx119 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx110 ;
+	rdf:object _:node19sgu385rx120 .
+
+_:node19sgu385rx108 atxa-core:contains _:node19sgu385rx121 .
+
+_:node19sgu385rx121 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$WordCountMapperDBOut.map(Object,Object,OutputCollector,Reporter,)> ;
+	atxa-core:posX "971" ;
+	atxa-core:posY "629" .
+
+_:node19sgu385rx108 atxa-core:contains _:node19sgu385rx122 .
+
+_:node19sgu385rx122 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$WordCountMapperDBOut.one> ;
+	atxa-core:posX "971" ;
+	atxa-core:posY "561" .
+
+_:node19sgu385rx108 atxa-core:contains _:node19sgu385rx123 .
+
+_:node19sgu385rx123 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$WordCountMapperDBOut.text> ;
+	atxa-core:posX "971" ;
+	atxa-core:posY "578" .
+
+_:node19sgu385rx108 atxa-core:contains _:node19sgu385rx124 .
+
+_:node19sgu385rx124 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$WordCountMapperDBOut.WordCountMapperDBOut()> ;
+	atxa-core:posX "971" ;
+	atxa-core:posY "646" .
+
+_:node19sgu385rx102 atxa-core:contains _:node19sgu385rx125 .
+
+_:node19sgu385rx125 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$WordCountReducerDBOut> ;
+	atxa-core:posX "970" ;
+	atxa-core:posY "669" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$WordCountReducerDBOut> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$WordCountReducerDBOut.reduce(DBOutput,Iterator,OutputCollector,Reporter,)> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$WordCountReducerDBOut.reduce(Object,Iterator,OutputCollector,Reporter,)> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$WordCountReducerDBOut.WordCountReducerDBOut()> .
+
+_:node19sgu385rx125 atxa-core:contains _:node19sgu385rx126 .
+
+_:node19sgu385rx126 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$WordCountReducerDBOut.reduce(DBOutput,Iterator,OutputCollector,Reporter,)> ;
+	atxa-core:posX "971" ;
+	atxa-core:posY "688" .
+
+_:node19sgu385rx127 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx126 ;
+	rdf:object _:node19sgu385rx105 .
+
+_:node19sgu385rx128 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx126 ;
+	rdf:object _:node19sgu385rx106 .
+
+_:node19sgu385rx129 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx126 ;
+	rdf:object _:node19sgu385rx107 .
+
+_:node19sgu385rx130 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx126 ;
+	rdf:object _:node19sgu385rx77 .
+
+_:node19sgu385rx131 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx126 ;
+	rdf:object _:node19sgu385rx79 .
+
+_:node19sgu385rx132 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx126 ;
+	rdf:object _:node19sgu385rx81 .
+
+_:node19sgu385rx133 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx126 ;
+	rdf:object _:node19sgu385rx83 .
+
+_:node19sgu385rx134 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx126 ;
+	rdf:object _:node19sgu385rx85 .
+
+_:node19sgu385rx135 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx126 ;
+	rdf:object _:node19sgu385rx104 .
+
+_:node19sgu385rx125 atxa-core:contains _:node19sgu385rx136 .
+
+_:node19sgu385rx136 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$WordCountReducerDBOut.reduce(Object,Iterator,OutputCollector,Reporter,)> ;
+	atxa-core:posX "971" ;
+	atxa-core:posY "705" .
+
+_:node19sgu385rx125 atxa-core:contains _:node19sgu385rx137 .
+
+_:node19sgu385rx137 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut$WordCountReducerDBOut.WordCountReducerDBOut()> ;
+	atxa-core:posX "971" ;
+	atxa-core:posY "722" .
+
+_:node19sgu385rx102 atxa-core:contains _:node19sgu385rx138 .
+
+_:node19sgu385rx138 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut.main(String[],)> ;
+	atxa-core:posX "970" ;
+	atxa-core:posY "398" .
+
+_:node19sgu385rx102 atxa-core:contains _:node19sgu385rx139 .
+
+_:node19sgu385rx139 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut.run(String,String,)> ;
+	atxa-core:posX "970" ;
+	atxa-core:posY "415" .
+
+_:node19sgu385rx102 atxa-core:contains _:node19sgu385rx140 .
+
+_:node19sgu385rx140 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountDBOut.WordCountDBOut()> ;
+	atxa-core:posX "970" ;
+	atxa-core:posY "432" .
+
+_:node19sgu385rx1 atxa-core:contains _:node19sgu385rx2 .
+
+_:node19sgu385rx2 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountMapper> ;
+	atxa-core:posX "1372" ;
+	atxa-core:posY "230" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#$WordCountMapper> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#$WordCountMapper.<clinit\>()> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountMapper.map(LongWritable,Text,OutputCollector,Reporter,)> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountMapper.map(Object,Object,OutputCollector,Reporter,)> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountMapper.one> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountMapper.word> , <http://www.architexa.com/rdf/jdt-wkspc#$WordCountMapper.WordCountMapper()> .
+
+_:node19sgu385rx3 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node19sgu385rx2 ;
+	rdf:object _:node19sgu385rx4 ;
+	atxa-core:bendpoint _:node19sgs294bx1108 .
+
+_:node19sgs294bx1108 atxa-core:bpLocation "1577,-37" ;
+	atxa-core:bpIndex "0" .
+
+_:node19sgu385rx3 atxa-core:bendpoint _:node19sgs294bx1109 .
+
+_:node19sgs294bx1109 atxa-core:bpLocation "1643,-37" ;
+	atxa-core:bpIndex "1" .
+
+_:node19sgu385rx7 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node19sgu385rx2 ;
+	rdf:object _:node19sgu385rx8 ;
+	atxa-core:bendpoint _:node19sgs294bx1110 .
+
+_:node19sgs294bx1110 atxa-core:bpLocation "1577,158" ;
+	atxa-core:bpIndex "0" .
+
+_:node19sgu385rx7 atxa-core:bendpoint _:node19sgs294bx1111 .
+
+_:node19sgs294bx1111 atxa-core:bpLocation "1395,158" ;
+	atxa-core:bpIndex "1" .
+
+_:node19sgu385rx2 atxa-core:contains _:node19sgu385rx11 .
+
+_:node19sgu385rx11 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountMapper.<clinit\>()> ;
+	atxa-core:posX "1373" ;
+	atxa-core:posY "283" .
+
+_:node19sgu385rx2 atxa-core:contains _:node19sgu385rx12 .
+
+_:node19sgu385rx12 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountMapper.map(LongWritable,Text,OutputCollector,Reporter,)> ;
+	atxa-core:posX "1373" ;
+	atxa-core:posY "300" .
+
+_:node19sgs294bx374 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx12 ;
+	rdf:object _:node19sgu385rx79 .
+
+_:node19sgu385rx2 atxa-core:contains _:node19sgu385rx13 .
+
+_:node19sgu385rx13 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountMapper.map(Object,Object,OutputCollector,Reporter,)> ;
+	atxa-core:posX "1373" ;
+	atxa-core:posY "317" .
+
+_:node19sgs294bx967 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node19sgu385rx13 ;
+	rdf:object _:node19sgu385rx12 .
+
+_:node19sgu385rx2 atxa-core:contains _:node19sgu385rx14 .
+
+_:node19sgu385rx14 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountMapper.one> ;
+	atxa-core:posX "1373" ;
+	atxa-core:posY "249" .
+
+_:node19sgu385rx2 atxa-core:contains _:node19sgu385rx15 .
+
+_:node19sgu385rx15 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountMapper.word> ;
+	atxa-core:posX "1373" ;
+	atxa-core:posY "266" .
+
+_:node19sgu385rx2 atxa-core:contains _:node19sgu385rx16 .
+
+_:node19sgu385rx16 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#$WordCountMapper.WordCountMapper()> ;
+	atxa-core:posX "1373" ;
+	atxa-core:posY "334" .
+
+atxa-core:docRoot atxa-core:contains _:node19sgu385rx141 .
+
+_:node19sgu385rx141 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred> ;
+	atxa-core:posX "1066" ;
+	atxa-core:posY "-294" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$Mapper> , <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$Reducer> , <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$Partitioner> , <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$MapReduceBase> , <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$JobConf> , <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$OutputCollector> .
+
+_:node19sgu385rx141 atxa-core:contains _:node19sgu385rx8 .
+
+_:node19sgu385rx8 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$Mapper> ;
+	atxa-core:posX "1345" ;
+	atxa-core:posY "101" .
+
+_:node19sgu385rx141 atxa-core:contains _:node19sgu385rx70 .
+
+_:node19sgu385rx70 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$Reducer> ;
+	atxa-core:posX "1193" ;
+	atxa-core:posY "108" .
+
+_:node19sgu385rx141 atxa-core:contains _:node19sgu385rx94 .
+
+_:node19sgu385rx94 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$Partitioner> ;
+	atxa-core:posX "1716" ;
+	atxa-core:posY "109" .
+
+_:node19sgu385rx141 atxa-core:contains _:node19sgu385rx4 .
+
+_:node19sgu385rx4 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$MapReduceBase> ;
+	atxa-core:posX "1560" ;
+	atxa-core:posY "-94" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$MapReduceBase> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$MapReduceBase.MapReduceBase()> .
+
+_:node19sgu385rx4 atxa-core:contains _:node19sgu385rx88 .
+
+_:node19sgu385rx88 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$MapReduceBase.MapReduceBase()> ;
+	atxa-core:posX "1561" ;
+	atxa-core:posY "-75" .
+
+_:node19sgu385rx141 atxa-core:contains _:node19sgu385rx143 .
+
+_:node19sgu385rx143 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$JobConf> ;
+	atxa-core:posX "1072" ;
+	atxa-core:posY "-268" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$JobConf> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$JobConf.JobConf(Class,)> , <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$JobConf.setCombinerClass(Class,)> , <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$JobConf.setInputFormat(Class,)> , <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$JobConf.setJobName(String,)> , <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$JobConf.setMapperClass(Class,)> , <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$JobConf.setNumReduceTasks(int,)> , <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$JobConf.setOutputFormat(Class,)> , <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$JobConf.setOutputKeyClass(Class,)> , <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$JobConf.setOutputValueClass(Class,)> , <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$JobConf.setPartitionerClass(Class,)> , <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$JobConf.setReducerClass(Class,)> .
+
+_:node19sgu385rx143 atxa-core:contains _:node19sgu385rx33 .
+
+_:node19sgu385rx33 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$JobConf.JobConf(Class,)> ;
+	atxa-core:posX "1073" ;
+	atxa-core:posY "-249" .
+
+_:node19sgu385rx143 atxa-core:contains _:node19sgu385rx37 .
+
+_:node19sgu385rx37 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$JobConf.setCombinerClass(Class,)> ;
+	atxa-core:posX "1073" ;
+	atxa-core:posY "-232" .
+
+_:node19sgu385rx143 atxa-core:contains _:node19sgu385rx39 .
+
+_:node19sgu385rx39 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$JobConf.setInputFormat(Class,)> ;
+	atxa-core:posX "1073" ;
+	atxa-core:posY "-215" .
+
+_:node19sgu385rx143 atxa-core:contains _:node19sgu385rx43 .
+
+_:node19sgu385rx43 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$JobConf.setJobName(String,)> ;
+	atxa-core:posX "1073" ;
+	atxa-core:posY "-198" .
+
+_:node19sgu385rx143 atxa-core:contains _:node19sgu385rx45 .
+
+_:node19sgu385rx45 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$JobConf.setMapperClass(Class,)> ;
+	atxa-core:posX "1073" ;
+	atxa-core:posY "-181" .
+
+_:node19sgu385rx143 atxa-core:contains _:node19sgu385rx47 .
+
+_:node19sgu385rx47 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$JobConf.setNumReduceTasks(int,)> ;
+	atxa-core:posX "1073" ;
+	atxa-core:posY "-164" .
+
+_:node19sgu385rx143 atxa-core:contains _:node19sgu385rx49 .
+
+_:node19sgu385rx49 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$JobConf.setOutputFormat(Class,)> ;
+	atxa-core:posX "1073" ;
+	atxa-core:posY "-147" .
+
+_:node19sgu385rx143 atxa-core:contains _:node19sgu385rx51 .
+
+_:node19sgu385rx51 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$JobConf.setOutputKeyClass(Class,)> ;
+	atxa-core:posX "1073" ;
+	atxa-core:posY "-130" .
+
+_:node19sgu385rx143 atxa-core:contains _:node19sgu385rx55 .
+
+_:node19sgu385rx55 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$JobConf.setOutputValueClass(Class,)> ;
+	atxa-core:posX "1073" ;
+	atxa-core:posY "-113" .
+
+_:node19sgu385rx143 atxa-core:contains _:node19sgu385rx57 .
+
+_:node19sgu385rx57 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$JobConf.setPartitionerClass(Class,)> ;
+	atxa-core:posX "1073" ;
+	atxa-core:posY "-96" .
+
+_:node19sgu385rx143 atxa-core:contains _:node19sgu385rx59 .
+
+_:node19sgu385rx59 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$JobConf.setReducerClass(Class,)> ;
+	atxa-core:posX "1073" ;
+	atxa-core:posY "-79" .
+
+_:node19sgu385rx141 atxa-core:contains _:node19sgu385rx142 .
+
+_:node19sgu385rx142 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$OutputCollector> ;
+	atxa-core:posX "1119" ;
+	atxa-core:posY "-4" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$OutputCollector> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$OutputCollector.collect(Object,Object,)> .
+
+_:node19sgu385rx142 atxa-core:contains _:node19sgu385rx79 .
+
+_:node19sgu385rx79 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapred$OutputCollector.collect(Object,Object,)> ;
+	atxa-core:posX "1120" ;
+	atxa-core:posY "15" .
+
+atxa-core:docRoot atxa-core:contains _:node19sgu385rx144 .
+
+_:node19sgu385rx144 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.conf> ;
+	atxa-core:posX "702" ;
+	atxa-core:posY "-271" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.conf> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.conf$Configured> .
+
+_:node19sgu385rx144 atxa-core:contains _:node19sgu385rx19 .
+
+_:node19sgu385rx19 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.conf$Configured> ;
+	atxa-core:posX "708" ;
+	atxa-core:posY "-245" .
+
+atxa-core:docRoot atxa-core:contains _:node19sgu385rx145 .
+
+_:node19sgu385rx145 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.util> ;
+	atxa-core:posX "27" ;
+	atxa-core:posY "-236" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.util> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.util$ToolRunner> , <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.util$Tool> .
+
+_:node19sgu385rx145 atxa-core:contains _:node19sgu385rx146 .
+
+_:node19sgu385rx146 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.util$ToolRunner> ;
+	atxa-core:posX "276" ;
+	atxa-core:posY "104" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.util$ToolRunner> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.util$ToolRunner.run(Tool,String[],)> .
+
+_:node19sgu385rx146 atxa-core:contains _:node19sgu385rx28 .
+
+_:node19sgu385rx28 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.util$ToolRunner.run(Tool,String[],)> ;
+	atxa-core:posX "277" ;
+	atxa-core:posY "123" .
+
+_:node19sgu385rx145 atxa-core:contains _:node19sgu385rx23 .
+
+_:node19sgu385rx23 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.util$Tool> ;
+	atxa-core:posX "33" ;
+	atxa-core:posY "-210" .
+
+atxa-core:docRoot atxa-core:contains _:node19sgu385rx147 .
+
+_:node19sgu385rx147 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce> ;
+	atxa-core:posX "321" ;
+	atxa-core:posY "807" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce$Reducer> , <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce$Mapper> , <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce$Job> .
+
+_:node19sgu385rx147 atxa-core:contains _:node19sgu385rx148 .
+
+_:node19sgu385rx148 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce$Reducer> ;
+	atxa-core:posX "533" ;
+	atxa-core:posY "927" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce$Reducer> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce$Reducer$Context> .
+
+_:node19sgu385rx148 atxa-core:contains _:node19sgu385rx149 .
+
+_:node19sgu385rx149 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce$Reducer$Context> ;
+	atxa-core:posX "534" ;
+	atxa-core:posY "946" .
+
+_:node19sgu385rx147 atxa-core:contains _:node19sgu385rx150 .
+
+_:node19sgu385rx150 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce$Mapper> ;
+	atxa-core:posX "599" ;
+	atxa-core:posY "833" .
+
+_:node19sgu385rx147 atxa-core:contains _:node19sgu385rx151 .
+
+_:node19sgu385rx151 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce$Job> ;
+	atxa-core:posX "327" ;
+	atxa-core:posY "865" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce$Job> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce$Job.Job(Configuration,)> , <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce$Job.submit()> , <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce$Job.waitForCompletion(boolean,)> .
+
+_:node19sgu385rx151 atxa-core:contains _:node19sgu385rx31 .
+
+_:node19sgu385rx31 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce$Job.Job(Configuration,)> ;
+	atxa-core:posX "328" ;
+	atxa-core:posY "884" .
+
+_:node19sgu385rx151 atxa-core:contains _:node19sgu385rx61 .
+
+_:node19sgu385rx61 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce$Job.submit()> ;
+	atxa-core:posX "328" ;
+	atxa-core:posY "901" .
+
+_:node19sgu385rx151 atxa-core:contains _:node19sgu385rx63 .
+
+_:node19sgu385rx63 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce$Job.waitForCompletion(boolean,)> ;
+	atxa-core:posX "328" ;
+	atxa-core:posY "918" .
+
+atxa-core:docRoot atxa-core:contains _:node19sgu385rx152 .
+
+_:node19sgu385rx152 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.fs> ;
+	atxa-core:posX "42" ;
+	atxa-core:posY "295" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.fs> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.fs$Path> .
+
+_:node19sgu385rx152 atxa-core:contains _:node19sgu385rx153 .
+
+_:node19sgu385rx153 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.fs$Path> ;
+	atxa-core:posX "48" ;
+	atxa-core:posY "321" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.fs$Path> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.fs$Path.Path(String,)> .
+
+_:node19sgu385rx153 atxa-core:contains _:node19sgu385rx35 .
+
+_:node19sgu385rx35 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.fs$Path.Path(String,)> ;
+	atxa-core:posX "49" ;
+	atxa-core:posY "340" .
+
+atxa-core:docRoot atxa-core:contains _:node19sgu385rx154 .
+
+_:node19sgu385rx154 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce.lib.input> ;
+	atxa-core:posX "2131" ;
+	atxa-core:posY "562" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce.lib.input> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce.lib.input$FileInputFormat> .
+
+_:node19sgu385rx154 atxa-core:contains _:node19sgu385rx155 .
+
+_:node19sgu385rx155 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce.lib.input$FileInputFormat> ;
+	atxa-core:posX "2137" ;
+	atxa-core:posY "588" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce.lib.input$FileInputFormat> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce.lib.input$FileInputFormat.setInputPaths(Job,Path[],)> .
+
+_:node19sgu385rx155 atxa-core:contains _:node19sgu385rx41 .
+
+_:node19sgu385rx41 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce.lib.input$FileInputFormat.setInputPaths(Job,Path[],)> ;
+	atxa-core:posX "2138" ;
+	atxa-core:posY "607" .
+
+atxa-core:docRoot atxa-core:contains _:node19sgu385rx156 .
+
+_:node19sgu385rx156 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce.lib.output> ;
+	atxa-core:posX "17" ;
+	atxa-core:posY "177" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce.lib.output> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce.lib.output$FileOutputFormat> .
+
+_:node19sgu385rx156 atxa-core:contains _:node19sgu385rx157 .
+
+_:node19sgu385rx157 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce.lib.output$FileOutputFormat> ;
+	atxa-core:posX "23" ;
+	atxa-core:posY "203" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce.lib.output$FileOutputFormat> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce.lib.output$FileOutputFormat.setOutputPath(Job,Path,)> .
+
+_:node19sgu385rx157 atxa-core:contains _:node19sgu385rx53 .
+
+_:node19sgu385rx53 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.mapreduce.lib.output$FileOutputFormat.setOutputPath(Job,Path,)> ;
+	atxa-core:posX "24" ;
+	atxa-core:posY "222" .
+
+atxa-core:docRoot atxa-core:contains _:node19sgu385rx158 .
+
+_:node19sgu385rx158 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.io> ;
+	atxa-core:posX "2171" ;
+	atxa-core:posY "256" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.io> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.io$IntWritable> , <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.io$Text> .
+
+_:node19sgu385rx158 atxa-core:contains _:node19sgu385rx159 .
+
+_:node19sgu385rx159 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.io$IntWritable> ;
+	atxa-core:posX "2177" ;
+	atxa-core:posY "282" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.io$IntWritable> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.io$IntWritable.IntWritable(int,)> , <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.io$IntWritable.get()> .
+
+_:node19sgu385rx159 atxa-core:contains _:node19sgu385rx77 .
+
+_:node19sgu385rx77 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.io$IntWritable.IntWritable(int,)> ;
+	atxa-core:posX "2178" ;
+	atxa-core:posY "301" .
+
+_:node19sgu385rx159 atxa-core:contains _:node19sgu385rx81 .
+
+_:node19sgu385rx81 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.io$IntWritable.get()> ;
+	atxa-core:posX "2178" ;
+	atxa-core:posY "318" .
+
+_:node19sgu385rx158 atxa-core:contains _:node19sgu385rx160 .
+
+_:node19sgu385rx160 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.io$Text> ;
+	atxa-core:posX "2227" ;
+	atxa-core:posY "388" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.io$Text> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.io$Text.toString()> .
+
+_:node19sgu385rx160 atxa-core:contains _:node19sgu385rx120 .
+
+_:node19sgu385rx120 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#org.apache.hadoop.io$Text.toString()> ;
+	atxa-core:posX "2228" ;
+	atxa-core:posY "407" .
+
+atxa-core:docRoot atxa-core:contains _:node19sgu385rx161 .
+
+_:node19sgu385rx161 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#java.util> ;
+	atxa-core:posX "2405" ;
+	atxa-core:posY "-30" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#java.util> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#java.util$Iterator> , <http://www.architexa.com/rdf/jdt-wkspc#java.util$StringTokenizer> .
+
+_:node19sgu385rx161 atxa-core:contains _:node19sgu385rx162 .
+
+_:node19sgu385rx162 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#java.util$Iterator> ;
+	atxa-core:posX "2411" ;
+	atxa-core:posY "-4" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#java.util$Iterator> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#java.util$Iterator.hasNext()> , <http://www.architexa.com/rdf/jdt-wkspc#java.util$Iterator.next()> .
+
+_:node19sgu385rx162 atxa-core:contains _:node19sgu385rx83 .
+
+_:node19sgu385rx83 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#java.util$Iterator.hasNext()> ;
+	atxa-core:posX "2412" ;
+	atxa-core:posY "15" .
+
+_:node19sgu385rx162 atxa-core:contains _:node19sgu385rx85 .
+
+_:node19sgu385rx85 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#java.util$Iterator.next()> ;
+	atxa-core:posX "2412" ;
+	atxa-core:posY "32" .
+
+_:node19sgu385rx161 atxa-core:contains _:node19sgu385rx163 .
+
+_:node19sgu385rx163 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#java.util$StringTokenizer> ;
+	atxa-core:posX "2469" ;
+	atxa-core:posY "431" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#java.util$StringTokenizer> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#java.util$StringTokenizer.StringTokenizer(String,)> , <http://www.architexa.com/rdf/jdt-wkspc#java.util$StringTokenizer.hasMoreTokens()> , <http://www.architexa.com/rdf/jdt-wkspc#java.util$StringTokenizer.nextToken()> .
+
+_:node19sgu385rx163 atxa-core:contains _:node19sgu385rx113 .
+
+_:node19sgu385rx113 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#java.util$StringTokenizer.StringTokenizer(String,)> ;
+	atxa-core:posX "2470" ;
+	atxa-core:posY "450" .
+
+_:node19sgu385rx163 atxa-core:contains _:node19sgu385rx116 .
+
+_:node19sgu385rx116 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#java.util$StringTokenizer.hasMoreTokens()> ;
+	atxa-core:posX "2470" ;
+	atxa-core:posY "467" .
+
+_:node19sgu385rx163 atxa-core:contains _:node19sgu385rx118 .
+
+_:node19sgu385rx118 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#java.util$StringTokenizer.nextToken()> ;
+	atxa-core:posX "2470" ;
+	atxa-core:posY "484" .
+
+@prefix atxa-rse-eclipse: <http://www.architexa.com/rdf/rse-eclipse#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix atxa-jdt-wkspc: <http://www.architexa.com/rdf/jdt-wkspc#> .
+@prefix atxa-core: <http://www.architexa.com/rdf/core#> .
+@prefix atxa: <http://www.architexa.com/rdf/> .
+@prefix atxa-jdt: <http://www.architexa.com/rdf/jdt#> .
+
+<http://www.architexa.com/rdf/rse-eclipse#Class.atxa> a atxa-core:reloFile ;
+	atxa-core:contains _:node19sgu385rx26 , _:node19sgu385rx29 , _:node19sgu385rx64 , _:node19sgu385rx17 , _:node19sgu385rx73 , _:node19sgu385rx75 , _:node19sgu385rx86 , _:node19sgu385rx65 , _:node19sgu385rx97 , _:node19sgu385rx99 , _:node19sgu385rx100 , _:node19sgu385rx89 , _:node19sgu385rx104 , _:node19sgu385rx105 , _:node19sgu385rx106 , _:node19sgu385rx107 , _:node19sgu385rx103 , _:node19sgu385rx109 , _:node19sgu385rx110 , _:node19sgu385rx121 , _:node19sgu385rx122 , _:node19sgu385rx123 , _:node19sgu385rx124 , _:node19sgu385rx108 , _:node19sgu385rx126 , _:node19sgu385rx136 , _:node19sgu385rx137 , _:node19sgu385rx125 , _:node19sgu385rx138 , _:node19sgu385rx139 , _:node19sgu385rx140 , _:node19sgu385rx102 , _:node19sgu385rx11 , _:node19sgu385rx12 , _:node19sgu385rx13 , _:node19sgu385rx14 , _:node19sgu385rx15 , _:node19sgu385rx16 , _:node19sgu385rx2 , _:node19sgu385rx1 , _:node19sgu385rx8 , _:node19sgu385rx70 , _:node19sgu385rx94 , _:node19sgu385rx88 , _:node19sgu385rx4 , _:node19sgu385rx33 , _:node19sgu385rx37 , _:node19sgu385rx39 , _:node19sgu385rx43 , _:node19sgu385rx45 , _:node19sgu385rx47 , _:node19sgu385rx49 , _:node19sgu385rx51 , _:node19sgu385rx55 , _:node19sgu385rx57 , _:node19sgu385rx59 , _:node19sgu385rx143 , _:node19sgu385rx79 , _:node19sgu385rx142 , _:node19sgu385rx141 , _:node19sgu385rx19 , _:node19sgu385rx144 , _:node19sgu385rx28 , _:node19sgu385rx146 , _:node19sgu385rx23 , _:node19sgu385rx145 , _:node19sgu385rx149 , _:node19sgu385rx148 , _:node19sgu385rx150 , _:node19sgu385rx31 , _:node19sgu385rx61 , _:node19sgu385rx63 , _:node19sgu385rx151 , _:node19sgu385rx147 , _:node19sgu385rx35 , _:node19sgu385rx153 , _:node19sgu385rx152 , _:node19sgu385rx41 , _:node19sgu385rx155 , _:node19sgu385rx154 , _:node19sgu385rx53 , _:node19sgu385rx157 , _:node19sgu385rx156 , _:node19sgu385rx77 , _:node19sgu385rx81 , _:node19sgu385rx159 , _:node19sgu385rx120 , _:node19sgu385rx160 , _:node19sgu385rx158 , _:node19sgu385rx83 , _:node19sgu385rx85 , _:node19sgu385rx162 , _:node19sgu385rx113 , _:node19sgu385rx116 , _:node19sgu385rx118 , _:node19sgu385rx163 , _:node19sgu385rx161 , atxa-core:docRoot , _:node19sgu385rx26 , _:node19sgu385rx29 , _:node19sgu385rx64 , _:node19sgu385rx17 , _:node19sgu385rx73 , _:node19sgu385rx75 , _:node19sgu385rx86 , _:node19sgu385rx65 , _:node19sgu385rx97 , _:node19sgu385rx99 , _:node19sgu385rx100 , _:node19sgu385rx89 , _:node19sgu385rx104 , _:node19sgu385rx105 , _:node19sgu385rx106 , _:node19sgu385rx107 , _:node19sgu385rx103 , _:node19sgu385rx109 , _:node19sgu385rx110 , _:node19sgu385rx121 , _:node19sgu385rx122 , _:node19sgu385rx123 , _:node19sgu385rx124 , _:node19sgu385rx108 , _:node19sgu385rx126 , _:node19sgu385rx136 , _:node19sgu385rx137 , _:node19sgu385rx125 , _:node19sgu385rx138 , _:node19sgu385rx139 , _:node19sgu385rx140 , _:node19sgu385rx102 , _:node19sgu385rx11 , _:node19sgu385rx12 , _:node19sgu385rx13 , _:node19sgu385rx14 , _:node19sgu385rx15 , _:node19sgu385rx16 , _:node19sgu385rx2 , _:node19sgu385rx1 , _:node19sgu385rx8 , _:node19sgu385rx70 , _:node19sgu385rx94 , _:node19sgu385rx88 , _:node19sgu385rx4 , _:node19sgu385rx33 , _:node19sgu385rx37 , _:node19sgu385rx39 , _:node19sgu385rx43 , _:node19sgu385rx45 , _:node19sgu385rx47 , _:node19sgu385rx49 , _:node19sgu385rx51 , _:node19sgu385rx55 , _:node19sgu385rx57 , _:node19sgu385rx59 , _:node19sgu385rx143 , _:node19sgu385rx79 , _:node19sgu385rx142 , _:node19sgu385rx141 , _:node19sgu385rx19 , _:node19sgu385rx144 , _:node19sgu385rx28 , _:node19sgu385rx146 , _:node19sgu385rx23 , _:node19sgu385rx145 , _:node19sgu385rx149 , _:node19sgu385rx148 , _:node19sgu385rx150 , _:node19sgu385rx31 , _:node19sgu385rx61 , _:node19sgu385rx63 , _:node19sgu385rx151 , _:node19sgu385rx147 , _:node19sgu385rx35 , _:node19sgu385rx153 , _:node19sgu385rx152 , _:node19sgu385rx41 , _:node19sgu385rx155 , _:node19sgu385rx154 , _:node19sgu385rx53 , _:node19sgu385rx157 , _:node19sgu385rx156 , _:node19sgu385rx77 , _:node19sgu385rx81 , _:node19sgu385rx159 , _:node19sgu385rx120 , _:node19sgu385rx160 , _:node19sgu385rx158 , _:node19sgu385rx83 , _:node19sgu385rx85 , _:node19sgu385rx162 , _:node19sgu385rx113 , _:node19sgu385rx116 , _:node19sgu385rx118 , _:node19sgu385rx163 , _:node19sgu385rx161 , atxa-core:docRoot , _:node19sgu385rx18 , _:node19sgu385rx22 , _:node19sgu385rx27 , _:node19sgu385rx30 , _:node19sgu385rx32 , _:node19sgu385rx34 , _:node19sgu385rx36 , _:node19sgu385rx38 , _:node19sgu385rx40 , _:node19sgu385rx42 , _:node19sgu385rx44 , _:node19sgu385rx46 , _:node19sgu385rx48 , _:node19sgu385rx50 , _:node19sgu385rx52 , _:node19sgu385rx54 , _:node19sgu385rx56 , _:node19sgu385rx58 , _:node19sgu385rx60 , _:node19sgu385rx62 , _:node19sgu385rx66 , _:node19sgu385rx69 , _:node19sgu385rx74 , _:node19sgu385rx76 , _:node19sgu385rx78 , _:node19sgu385rx80 , _:node19sgu385rx82 , _:node19sgu385rx84 , _:node19sgu385rx87 , _:node19sgu385rx90 , _:node19sgu385rx93 , _:node19sgu385rx98 , _:node19sgu385rx101 , _:node19sgu385rx111 , _:node19sgu385rx112 , _:node19sgu385rx114 , _:node19sgu385rx115 , _:node19sgu385rx117 , _:node19sgu385rx119 , _:node19sgu385rx127 , _:node19sgu385rx128 , _:node19sgu385rx129 , _:node19sgu385rx130 , _:node19sgu385rx131 , _:node19sgu385rx132 , _:node19sgu385rx133 , _:node19sgu385rx134 , _:node19sgu385rx135 , _:node19sgu385rx3 , _:node19sgu385rx7 , _:node19sgs294bx374 , _:node19sgs294bx967 , _:node19sgu385rx18 , _:node19sgu385rx22 , _:node19sgu385rx27 , _:node19sgu385rx30 , _:node19sgu385rx32 , _:node19sgu385rx34 , _:node19sgu385rx36 , _:node19sgu385rx38 , _:node19sgu385rx40 , _:node19sgu385rx42 , _:node19sgu385rx44 , _:node19sgu385rx46 , _:node19sgu385rx48 , _:node19sgu385rx50 , _:node19sgu385rx52 , _:node19sgu385rx54 , _:node19sgu385rx56 , _:node19sgu385rx58 , _:node19sgu385rx60 , _:node19sgu385rx62 , _:node19sgu385rx66 , _:node19sgu385rx69 , _:node19sgu385rx74 , _:node19sgu385rx76 , _:node19sgu385rx78 , _:node19sgu385rx80 , _:node19sgu385rx82 , _:node19sgu385rx84 , _:node19sgu385rx87 , _:node19sgu385rx90 , _:node19sgu385rx93 , _:node19sgu385rx98 , _:node19sgu385rx101 , _:node19sgu385rx111 , _:node19sgu385rx112 , _:node19sgu385rx114 , _:node19sgu385rx115 , _:node19sgu385rx117 , _:node19sgu385rx119 , _:node19sgu385rx127 , _:node19sgu385rx128 , _:node19sgu385rx129 , _:node19sgu385rx130 , _:node19sgu385rx131 , _:node19sgu385rx132 , _:node19sgu385rx133 , _:node19sgu385rx134 , _:node19sgu385rx135 , _:node19sgu385rx3 , _:node19sgu385rx7 , _:node19sgs294bx374 , _:node19sgs294bx967 .
+

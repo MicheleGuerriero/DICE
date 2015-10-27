@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<_12:TServiceTemplate xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:_12="http://docs.oasis-open.org/tosca/ns/2011/12" id="tosca_definitions_version" name="cloudify_dsl_1_0">
+  <topologyTemplate>
+    <nodeTemplate id="master" type="masternode" name="master">
+      <properties>
+        <property name="net_uuid"/>
+        <property name="cpu_count"/>
+        <property name="ram_amount"/>
+        <property name="key_uuid"/>
+        <property name="wait_started_timeout"/>
+        <property name="wait_started_interval"/>
+        <property name="password"/>
+        <property name="customer"/>
+        <property name="api_uuid"/>
+        <property name="server_type"/>
+        <property name="url"/>
+        <property name="image_uuid"/>
+        <property name="ce_cert"/>
+      </properties>
+    </nodeTemplate>
+    <nodeTemplate id="config" type="config" name="config">
+      <nodeHasInterface name="cloudify_interfaces_lifecycle">
+        <operation name="start" scriptPath="start.py"/>
+        <operation name="configure" scriptPath="configure.py"/>
+        <operation name="create" scriptPath="create.py"/>
+      </nodeHasInterface>
+    </nodeTemplate>
+    <nodeTemplate id="worker" type="WorkerNode" name="worker">
+      <properties>
+        <property name="net_uuid"/>
+        <property name="cpu_count"/>
+        <property name="ram_amount"/>
+        <property name="key_uuid"/>
+        <property name="wait_started_timeout"/>
+        <property name="wait_started_interval"/>
+        <property name="password"/>
+        <property name="customer"/>
+        <property name="api_uuid"/>
+        <property name="server_type"/>
+        <property name="url"/>
+        <property name="image_uuid"/>
+        <property name="ce_cert"/>
+        <property name="deploy">
+          <value>0</value>
+        </property>
+      </properties>
+    </nodeTemplate>
+    <nodeTemplate id="masterChef" type="masterChef" name="masterChef">
+      <properties>
+        <property name="version"/>
+        <property name="chef_server_url"/>
+        <property name="environment"/>
+        <property name="validation_client_name"/>
+        <property name="validation_client_name"/>
+        <property name="node_name_prefix"/>
+        <property name="node_name_suffix"/>
+        <property name="attributes"/>
+        <property name="runlists"/>
+        <property name="chef_cookbooks">
+          <value>- recipe[apt::default]</value>
+          <value>- recipe[java::default]</value>
+          <value>- recipe[hadoop::hadoop_hdfs_namenode]</value>
+          <value>- recipe[hadoop_yarn_resourcemanager]</value>
+          <value>- recipe[hadoop::hadoop_mapreduce_historyserver]</value>
+          <value>- recipe[hadoop::zookeeper_server]</value>
+          <value>- recipe[hadoop::spark_master]</value>
+          <value>- recipe[apache::kafka::default]</value>
+          <value>- recipe[collected-ng::default]</value>
+        </property>
+      </properties>
+      <nodeHasInterface name="cloudify_interfaces_lifecycle">
+        <operation name="start" scriptPath="masterchefstart.py"/>
+        <operation name="configure"/>
+        <operation name="create" scriptPath="masterchefcreate.py"/>
+      </nodeHasInterface>
+    </nodeTemplate>
+    <nodeTemplate id="workerChef" type="workerChef" name="workerChef">
+      <properties>
+        <property name="version"/>
+        <property name="chef_server_url"/>
+        <property name="environment"/>
+        <property name="validation_client_name"/>
+        <property name="validation_client_name"/>
+        <property name="node_name_prefix">
+          <value></value>
+        </property>
+        <property name="node_name_suffix"/>
+        <property name="attributes"/>
+        <property name="runlists"/>
+        <property name="chef_cookbooks">
+          <value>- recipe[apt::default]</value>
+          <value>- recipe[java::default]</value>
+          <value>- recipe[hadoop::hadoop_hdfs_datanode]</value>
+          <value>- recipe[hadoop_yarn_nodemanager]</value>
+          <value>- recipe[hadoop::zookeeper_server]</value>
+          <value>- recipe[hadoop::spark_worker]</value>
+          <value>- recipe[apache::kafka::default]</value>
+          <value>- recipe[collected-ng::default]</value>
+        </property>
+      </properties>
+      <nodeHasInterface name="cloudify_interfaces_lifecycle">
+        <operation name="start" scriptPath="start.py"/>
+        <operation name="configure"/>
+        <operation name="create" scriptPath="create.py"/>
+      </nodeHasInterface>
+    </nodeTemplate>
+  </topologyTemplate>
+  <hasImports>
+    <value>- http://www.getcloud.yaml</value>
+    <value>- http://www.dfdfdfdf.yaml</value>
+  </hasImports>
+</_12:TServiceTemplate>

@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.xtext.example.yaml
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.xtext.example.yaml; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext;visibility:=reexport,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.polimi.mymodelingproject,
+ org.eclipse.xtext.util,
+ org.eclipse.xtext.xbase.lib,
+ org.antlr.runtime,
+ org.eclipse.xtext.common.types,
+ org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.xtext.example.yaml,
+ org.xtext.example.yaml.services,
+ org.xtext.example.yaml.serializer,
+ org.xtext.example.yaml.parser.antlr,
+ org.xtext.example.yaml.parser.antlr.internal,
+ org.xtext.example.yaml.validation,
+ org.xtext.example.yaml.scoping,
+ org.xtext.example.yaml.generator,
+ org.xtext.example.yaml.formatting

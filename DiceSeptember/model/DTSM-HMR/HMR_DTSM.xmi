@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ASCII"?>
+<HadoopMR:HMR_DTSM
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:HadoopMR="www.dice.polimi.it"
+    xsi:schemaLocation="www.dice.polimi.it /DiceSeptember/model/DTSM-HMR/HMR_DTSM.ecore">
+  <set/>
+  <SetDBOutputFormat/>
+  <SetDBConfig
+      UserName=""/>
+  <setMapperClass
+      mapper=""/>
+  <setReducerClass
+      reducer=""/>
+  <SubmitJob/>
+  <setsJobConf/>
+</HadoopMR:HMR_DTSM>

@@ -1,0 +1,616 @@
+-- @nsURI UML=http://www.eclipse.org/uml2/3.0.0/UML
+-- @path HmrDDSM=/DiceSeptember/model/DDSM/Cloud.ecore
+-- @path HmrTOSCA=/DiceSeptember/model/TOSCA/_12.ecore
+
+module HadoopDDSM2TOSCA;
+create OUT : HmrTOSCA from IN : HmrDDSM;
+
+helper context HmrDDSM!HMR_DDSM def: referenceRelationships(): Sequence (HmrDDSM!NodeRelationsipComponent) = self.hasRelationships.asSequence();
+rule HadoopDDSM2TOSCA{	
+	from 
+		s: HmrDDSM!HMR_DDSM
+	to 
+		t: HmrTOSCA!TServiceTemplate(
+			id <- s.id,
+			name <- s.type,
+			hasImports <- thisModule.getimports(s),
+			topologyTemplate <- thisModule.getTopologyTemplate(s)
+			--hasRelationship <- s.referenceRelationships() ->  collect(relashtion | thisModule.getserviceRelationShips(relashtion)) --tins part is commented as Xlab decided to put it into their library
+			
+		)
+}
+
+--complete this part
+lazy rule getserviceRelationShips{	
+	from 
+		i: HmrDDSM!NodeRelationsipComponent
+	to 
+		t: HmrTOSCA!TRelationshipType(
+			
+			name <- i.relationName
+			
+			
+			
+			
+		)
+}
+
+
+
+
+
+
+helper context HmrDDSM!HMR_DDSM def: reference(): Sequence (HmrDDSM!input) = self.hasinputs.asSequence();
+helper context HmrDDSM!HMR_DDSM def: referenceoutputs(): Sequence (HmrDDSM!output) = self.hasoutputs.asSequence();
+helper context HmrDDSM!HMR_DDSM def: referenceMaster(): HmrDDSM!MasterNode = self.hasMasterNode;
+helper context HmrDDSM!HMR_DDSM def: referenceSlaves(): HmrDDSM!SlaveNode = self.hasSlaves;
+lazy rule getTopologyTemplate{	
+	from 
+		i: HmrDDSM!HMR_DDSM
+	to 
+		t: HmrTOSCA!TTopologyTemplate(
+			
+			hasInputs <- i.reference() ->  collect(inp | thisModule.getinputs(inp)) ,
+			nodeTemplate <- thisModule.getMasterNodeTemplate(i.hasMasterNode),
+			nodeTemplate <- thisModule.getMasterNodeConfigNode(i.hasMasterNode.contains_config),
+			nodeTemplate <- i.referenceSlaves()-> collect(slv | thisModule.getSlaveNodeTemplate(slv)),
+			nodeTemplate <- thisModule.getMasterNodechef(i.hasMasterNode.contains_master_chef),
+			nodeTemplate <- thisModule.getMasterNodechef(i.hasSlaves.first().contains_worker_chef),
+			hasoutPuts <- i.referenceoutputs() -> collect(out | thisModule.getoutputs(out))
+			
+		)
+}
+
+helper context HmrDDSM!worker_chef def: referenceNodeHasRelations(): HmrDDSM!relation = self.relationships;
+helper context HmrDDSM!master_chef def: referenceNodeHasRelations(): HmrDDSM!relation = self.relationships;
+
+
+
+lazy rule getMasterNodechef{
+	from 
+		i : HmrDDSM!master_chef
+	to 
+		t: HmrTOSCA!TNodeTemplate(
+			
+		id <- i.name ,		
+		name <- i.name,
+		--nodeHasInterface <- thisModule.getMasterNodeConfigInterface(i),
+		type <- i.type,
+		nodeHasRelations <-i.referenceNodeHasRelations() -> collect(rel| thisModule.getMasterNodeConfigRelationShips(rel)),
+		properties  <- thisModule.getChefNodePropertiesType(i)
+		
+		--**************
+					
+			
+		)
+}
+
+lazy rule getChefNodePropertiesType{
+	from 
+		i : HmrDDSM!master_chef
+	to 
+		t: HmrTOSCA!PropertiesType(
+			
+		property <-  thisModule.getchefNodePropertyversion(i),
+		property <-  thisModule.getchefNodePropertychef_server_url(i),
+		property <-  thisModule.getchefNodePropertyenvironment(i),
+		property <-  thisModule.getchefNodePropertyvalidation_client_name(i),
+		
+		property <-  thisModule.getchefNodePropertyvalidation_key(i),
+		property <-  thisModule.getchefNodePropertynode_name_prefix(i),
+		property <-  thisModule.getchefNodePropertynode_name_suffix(i),
+		property <-  thisModule.getchefNodePropertyattributes(i),
+		
+		property <-  thisModule.getchefNodePropertyrunlists(i),
+		property <-  thisModule.getchefNodePropertychefCookBooks(i)		
+			
+		)
+}
+
+
+
+lazy rule getchefNodePropertyversion{
+	from 
+		i : HmrDDSM!master_chef
+	to 
+	j: HmrTOSCA!TProperty(			
+		name <- 'version',
+		value <- i.version
+		)
+}
+
+lazy rule getchefNodePropertychef_server_url{
+	from 
+		i : HmrDDSM!master_chef
+	to 
+	j: HmrTOSCA!TProperty(			
+		name <- 'chef_server_url',
+		value <- i.chef_server_url
+		)
+}
+
+
+lazy rule getchefNodePropertyenvironment{
+	from 
+		i : HmrDDSM!master_chef
+	to 
+	j: HmrTOSCA!TProperty(			
+		name <- 'environment',
+		value <- i.environment
+		)
+}
+
+lazy rule getchefNodePropertyvalidation_client_name{
+	from 
+		i : HmrDDSM!master_chef
+	to 
+	j: HmrTOSCA!TProperty(			
+		name <- 'validation_client_name',
+		value <- i.validation_client_name
+		)
+}
+
+
+lazy rule getchefNodePropertyvalidation_key{
+	from 
+		i : HmrDDSM!master_chef
+	to 
+	j: HmrTOSCA!TProperty(			
+		name <- 'validation_client_name',
+		value <- i.validation_key
+		)
+}
+
+lazy rule getchefNodePropertynode_name_prefix{
+	from 
+		i : HmrDDSM!master_chef
+	to 
+	j: HmrTOSCA!TProperty(			
+		name <- 'node_name_prefix',
+		value <- i.node_name_prefix
+		)
+}
+
+
+lazy rule getchefNodePropertynode_name_suffix{
+	from 
+		i : HmrDDSM!master_chef
+	to 
+	j: HmrTOSCA!TProperty(			
+		name <- 'node_name_suffix',
+		value <- i.node_name_suffix
+		)
+}
+
+
+lazy rule getchefNodePropertyattributes{
+	from 
+		i : HmrDDSM!master_chef
+	to 
+	j: HmrTOSCA!TProperty(			
+		name <- 'attributes',
+		value <- i.attributes
+		)
+}
+
+lazy rule getchefNodePropertyrunlists{
+	from 
+		i : HmrDDSM!master_chef
+	to 
+	j: HmrTOSCA!TProperty(			
+		name <- 'runlists',
+		value <- i.runlists
+		)
+}
+
+
+lazy rule getchefNodePropertychefCookBooks{
+	from 
+		i : HmrDDSM!master_chef
+	to 
+	j: HmrTOSCA!TProperty(			
+		name <- 'chef_cookbooks',		
+		value <- i.chef_cook_books -> collect(book | book.toString())
+		)
+}
+
+lazy rule getbooks{
+	from 
+		i : HmrDDSM!master_chef
+	to 
+		t: HmrTOSCA!TProperty(
+		
+			value <- i.chef_cook_books			
+			
+		)
+}
+
+
+
+helper context HmrDDSM!config def: referenceNodeHasRelations(): HmrDDSM!relation = self.relationships;
+lazy rule getMasterNodeConfigNode{
+	from 
+		i : HmrDDSM!config
+	to 
+		t: HmrTOSCA!TNodeTemplate(
+			
+		id <- i.name ,		
+		name <- i.name,
+		--nodeHasInterface <- thisModule.getMasterNodeConfigInterface(i),  -- as XLab wants to put interfaces in their library this is commented
+		type <- i.type,
+		nodeHasRelations <-i.referenceNodeHasRelations() -> collect(rel| thisModule.getMasterNodeConfigRelationShips(rel))
+						
+			
+		)
+}
+
+
+lazy rule getMasterNodeConfigRelationShips{
+	from 
+		i : HmrDDSM!relation
+	to 
+		t: HmrTOSCA!TRelationshipType(
+			
+		name <- i.type,
+		targetNamespace <- i.target
+			
+		)
+}
+
+
+
+lazy rule getMasterNodeConfigInterface{
+	from 
+		i : HmrDDSM!config 
+	to 
+		t: HmrTOSCA!TInterface(
+			
+		name <- i.interfaces.type.toString(),
+		operation <- thisModule.getConfigInterfaceOperations(i.interfaces)		
+			
+		)
+}
+
+lazy rule getConfigInterfaceOperations{
+	from 
+		i : HmrDDSM!interface
+	to 
+		t: HmrTOSCA!TOperation(
+			
+		  name <- 'operations',
+		  
+		  inputParameters <- thisModule.getOperationParametersType(i)
+			
+		)
+}
+
+
+
+lazy rule getOperationParametersType{
+	from 
+		i : HmrDDSM!interface
+	to 
+		t: HmrTOSCA!InputParametersType(
+			
+		inputParameter <- thisModule.getStartinputParameter(i),
+		inputParameter <- thisModule.getConfigureParameter(i),
+		inputParameter <- thisModule.getCreateParameter(i)		
+			
+		)
+}
+
+lazy rule getStartinputParameter{
+	from 
+		i : HmrDDSM!interface
+	to 
+		t: HmrTOSCA!TParameter(
+			name <- 'start',
+			type <- i.start	 	 
+			
+		)
+}
+
+lazy rule getConfigureParameter{
+	from 
+		i : HmrDDSM!interface
+	to 
+		t: HmrTOSCA!TParameter(
+			name <- 'configure',
+			type <- i.configure	 	 
+			
+		)
+}
+
+
+lazy rule getCreateParameter{
+	from 
+		i : HmrDDSM!interface
+	to 
+		t: HmrTOSCA!TParameter(
+			name <- 'create',
+			type <- i.create	 	 
+			
+		)
+}
+
+
+lazy rule getSlaveNodeTemplate{
+	from 
+		i : HmrDDSM!SlaveNode
+	to 
+		t: HmrTOSCA!TNodeTemplate(
+			
+		id <- i.name,		
+		name <- i.name,
+		type <- i.slaveType,
+	    properties <- thisModule.getSlaveNodePropertiesType(i)
+			
+		)
+}
+
+
+
+
+
+
+
+lazy rule getSlaveNodePropertiesType{
+	from 
+		i : HmrDDSM!SlaveNode
+	to 
+		t: HmrTOSCA!PropertiesType(
+			
+		property <-  thisModule.getMasterNodePropertynet_uuid(i),
+		property <-  thisModule.getMasterNodePropertyCpu(i),
+		property <-  thisModule.getMasterNodePropertyRam_amount(i),
+		property <-  thisModule.getMasterNodePropertykey_uuid(i),
+		
+		property <-  thisModule.getMasterNodePropertywait_started_timeout(i),
+		property <-  thisModule.getMasterNodePropertywait_started_interval(i),
+		property <-  thisModule.getMasterNodePropertyPassword(i),
+		property <-  thisModule.getMasterNodePropertycustomer(i),
+		
+		property <-  thisModule.getMasterNodePropertyapi_uuid(i),
+		property <-  thisModule.getMasterNodePropertyserver_type(i),
+		property <-  thisModule.getMasterNodePropertyurl(i),
+		property <-  thisModule.getMasterNodePropertyimage_uuid(i),
+		property <-  thisModule.getMasterNodePropertyce_certificate(i),
+		property <-  thisModule.getSlaveNodepropertydeploy(i)
+		
+			
+		)
+}
+
+lazy rule getSlaveNodepropertydeploy{
+	from 
+		i : HmrDDSM!SlaveNode
+	to 
+	j: HmrTOSCA!TProperty(			
+		name <- 'deploy',
+		value <- i.instances.toString()
+		)
+}
+
+lazy rule getMasterNodeTemplate{
+	from 
+		i : HmrDDSM!MasterNode
+	to 
+		t: HmrTOSCA!TNodeTemplate(
+			
+		id <- i.name ,		
+		name <- i.name,
+		type <- i.masterType,
+		properties <- thisModule.getMasterNodePropertiesType(i)
+			
+		)
+}
+
+lazy rule getMasterNodePropertiesType{
+	from 
+		i : HmrDDSM!MasterNode
+	to 
+		t: HmrTOSCA!PropertiesType(
+			
+		property <-  thisModule.getMasterNodePropertynet_uuid(i),
+		property <-  thisModule.getMasterNodePropertyCpu(i),
+		property <-  thisModule.getMasterNodePropertyRam_amount(i),
+		property <-  thisModule.getMasterNodePropertykey_uuid(i),
+		
+		property <-  thisModule.getMasterNodePropertywait_started_timeout(i),
+		property <-  thisModule.getMasterNodePropertywait_started_interval(i),
+		property <-  thisModule.getMasterNodePropertyPassword(i),
+		property <-  thisModule.getMasterNodePropertycustomer(i),
+		
+		property <-  thisModule.getMasterNodePropertyapi_uuid(i),
+		property <-  thisModule.getMasterNodePropertyserver_type(i),
+		property <-  thisModule.getMasterNodePropertyurl(i),
+		property <-  thisModule.getMasterNodePropertyimage_uuid(i),
+		property <-  thisModule.getMasterNodePropertyce_certificate(i)
+			
+			
+		)
+}
+
+
+
+lazy rule getMasterNodePropertynet_uuid{
+	from 
+		i : HmrDDSM!MasterNode
+	to 
+	j: HmrTOSCA!TProperty(			
+		name <- 'net_uuid',
+		value <- i.net_uuid
+		)
+}
+
+
+lazy rule getMasterNodePropertyCpu{
+	from 
+		i : HmrDDSM!MasterNode
+	to 
+	j: HmrTOSCA!TProperty(			
+		name <- 'cpu_count',
+		value <- i.cpu
+		)
+}
+
+
+lazy rule getMasterNodePropertyRam_amount{
+	from 
+		i : HmrDDSM!MasterNode
+	to 
+	j: HmrTOSCA!TProperty(			
+		name <- 'ram_amount',
+		value <- i.ram
+		)
+}
+
+
+
+lazy rule getMasterNodePropertykey_uuid{
+	from 
+		i : HmrDDSM!MasterNode
+	to 
+	j: HmrTOSCA!TProperty(			
+		name <- 'key_uuid',
+		value <- i.key_uuid
+		)
+}
+
+lazy rule getMasterNodePropertywait_started_timeout{
+	from 
+		i : HmrDDSM!MasterNode
+	to 
+	j: HmrTOSCA!TProperty(			
+		name <- 'wait_started_timeout',
+		value <- i.wait_started_timeout
+		)
+}
+
+
+lazy rule getMasterNodePropertywait_started_interval{
+	from 
+		i : HmrDDSM!MasterNode
+	to 
+	j: HmrTOSCA!TProperty(			
+		name <- 'wait_started_interval',
+		value <- i.wait_started_interval
+		)
+}
+
+
+
+lazy rule getMasterNodePropertyPassword{
+	from 
+		i : HmrDDSM!MasterNode
+	to 
+	j: HmrTOSCA!TProperty(			
+		name <- 'password',
+		value <- i.password
+		)
+}
+
+
+
+
+lazy rule getMasterNodePropertyapi_uuid{
+	from 
+		i : HmrDDSM!MasterNode
+	to 
+	j: HmrTOSCA!TProperty(			
+		name <- 'api_uuid',
+		value <- i.api_uuid
+		)
+}
+
+lazy rule getMasterNodePropertycustomer{
+	from 
+		i : HmrDDSM!MasterNode
+	to 
+	j: HmrTOSCA!TProperty(			
+		name <- 'customer',
+		value <- i.customer
+		)
+}
+
+
+lazy rule getMasterNodePropertyurl{
+	from 
+		i : HmrDDSM!MasterNode
+	to 
+	j: HmrTOSCA!TProperty(			
+		name <- 'url',
+		value <- i.url
+		)
+}
+
+
+lazy rule getMasterNodePropertyce_certificate{
+	from 
+		i : HmrDDSM!MasterNode
+	to 
+	j: HmrTOSCA!TProperty(			
+		name <- 'ce_cert',
+		value <- i.ce_certificate
+		)
+}
+
+lazy rule getMasterNodePropertyimage_uuid{
+	from 
+		i : HmrDDSM!MasterNode
+	to 
+	j: HmrTOSCA!TProperty(			
+		name <- 'image_uuid',
+		value <- i.image_uuid
+		)
+}
+
+
+lazy rule getMasterNodePropertyserver_type{
+	from 
+		i : HmrDDSM!MasterNode
+	to 
+	j: HmrTOSCA!TProperty(			
+		name <- 'server_type',
+		value <- i.server_type
+		)
+}
+
+lazy rule getinputs{
+	from 
+		reference : HmrDDSM!input
+	to 
+		t: HmrTOSCA!TInputTemplate(
+			
+			name <- reference.name,
+			value <- reference.value,
+			description <- reference.description
+				
+			
+		)
+}
+
+lazy rule getoutputs{
+	from 
+		reference : HmrDDSM!output
+	to 
+		t: HmrTOSCA!TOutputTemplate(
+			
+			name <- reference.name,
+			value <- reference.value
+			
+		)
+}
+
+
+
+lazy rule getimports{	
+	from 
+		i: HmrDDSM!HMR_DDSM
+	to 
+		t: HmrTOSCA!TimportTemplate(
+			
+			value <- i.imports
+			
+		)
+}

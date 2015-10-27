@@ -1,0 +1,221 @@
+
+-- @path DDSM=/DTSM2DDSM/WordCount_Example.ecore
+-- @path DTSM=/DTSM2DDSM/HadoopMR_DTSM.ecore
+
+
+module MR_DTSM2DDSM;
+
+create OUT: DDSM from IN: DTSM;
+
+
+ 
+helper context DTSM!HadoopSpecificationModel def:isHadoopSpecEmpty(): Boolean=
+	if not self.associated_to_HadoopMRrunner.oclIsUndefined() then
+		true
+	else
+		true
+	endif;
+
+
+
+
+
+
+
+
+
+
+
+
+rule HadoopSpecificationModel2JobConfigAndWordCountExample{	
+	from 
+		s: DTSM!HadoopSpecificationModel (s.isHadoopSpecEmpty())
+	to 
+		t: DDSM!WordCountExample(
+		   IsJobCompleted <- s.isJobSucceded,
+		   setsJobConf <- jobcnf,
+		   SubmitJob <- thisModule.getJobCleints(s.associated_to_HadoopMRrunner),
+		   SetInputFormat <- thisModule.getRecordReader(s.associated_to_HadoopMRrunner.contains_RecordReader),
+		   setMapperClass <- thisModule.getMapper(s.associated_to_HadoopMRrunner.contains_mappr),
+		   setReducerClass <- thisModule.getReducer(s.associated_to_HadoopMRrunner.contains_Reducer),
+		   setPartitionerClass <- thisModule.getPartitioner(s.associated_to_HadoopMRrunner.contains_Joiner),
+		   SetDBConfig <- thisModule.getDBConfig(s.associated_to_HadoopMRrunner.contains_DBaccessManager),
+		   SetDBInputFormat <- thisModule.getDBInputFormat(s.associated_to_HadoopMRrunner.contains_DBaccessManager),
+		   SetDBOutputFormat <- thisModule.getDBOutputFormat(s.associated_to_HadoopMRrunner.contains_DBaccessManager)
+		   
+		   ),
+		   
+		   jobcnf:  DDSM!JobConf (
+		   	 mapperClass <- s.mapperClass,
+			reducerClass <- s.reducerClass,
+			partitionerClass <- s.joinerClass,
+			combinerClass <- s.combinerclass,
+			numOfReduceTasks <- s.numOfReduceTasks,
+			jobName <- s.jobName,			
+			inputFormat <- s.inputFormat,
+			outputFormat <- s.outputFormat,
+			outputKeyClass <- s.outputKeyClass,
+			outputValueClass <- s.outputValueClass			     	
+		   )		
+}
+
+
+lazy rule getDBOutputFormat{
+	from
+	    i: DTSM!DBaccessManager
+	to 
+		j: DDSM!DBOutputFormat(
+			InputTableName <- i.tableName,
+			FieldNames <- i.FieldNames
+		)
+}
+
+lazy rule getDBInputFormat{
+	from
+		i: DTSM!DBaccessManager
+	to
+		j: DDSM!DBInputFormat(
+			TableName <- i.tableName,
+			Orderby <- i.OrderByFeildName,
+			WhereConditions <- i.Conditions,
+			connection <- i.connection,
+			FieldName <- i.FieldNames
+		)
+}
+
+lazy rule getDBConfig{
+	from
+		i: DTSM!DBaccessManager
+	to
+		j: DDSM!DBConfiguration(
+			DB_AccessURL <- i.DB_URL,
+			JDBC_DriverClass <- i.DRIVER_CLASS,
+			UserName <- i.UserName,
+			password <- i.Password
+			
+		)
+}
+					  
+					  
+					  
+					  
+					  
+lazy rule getMapper{
+	from
+		i: DTSM!Mapper
+	to
+		j: DDSM!WordCountMap(
+		    mapper <- i.mapper	
+		)
+}
+
+
+lazy rule getReducer{
+	from
+	 	i: DTSM!Reducer
+	to
+	    j: DDSM!WordCountReduce(
+	    	reducer <- i.reducer	
+	    )
+}
+
+
+lazy rule getPartitioner{
+	from
+		i: DTSM!joiner
+	to 
+	    j: DDSM!WordCountPartitioner(
+	    	partitioneNumber <- i.REDUCES_PER_HOST	
+	    )
+}
+
+lazy rule getJobCleints{
+	from 
+		i: DTSM!HadoopMRrunner
+	to
+	    j: DDSM!JobClient(
+	       JobID <- i.JobID,
+		   MapTaskReport <- i.MapTaskReport,
+		   ReduceTaskReport <- i.ReduceTaskRepor,
+		   clusterStatus <- i.clusterStatus,
+		   jobProgress <- i.jobProgress,
+		   jobQueue <- i.jobQueue,
+		   runningJobs <- i.runningJobs
+		   
+		   
+	    
+	    )	
+}
+
+lazy rule getRecordReader{
+	from
+	 	m: DTSM!RecordReader
+	to
+	 	n: DDSM!FileInputFormat(
+	 		
+	 		MaxSplitSize <- m.uses_InputSplitDataSpec.maxSplitSize,
+			MinSplitSize <- m.uses_InputSplitDataSpec.MinSplitSize,
+			isSplitable <- m.isInputSplitable,
+			uses_RecordReader <- thisModule.getKeyValueGenerator(m)			
+			
+	 		
+	 	)
+		
+}
+
+lazy rule getKeyValueGenerator{
+	from
+	  k: DTSM!RecordReader
+	to
+	  l: DDSM!RecordReader(
+	     	pos <- k.pos,
+			Progress <- k.uses_KeyValueGenerator.Progress,
+			consumesInputSplit <- thisModule.getInputSplit(k),
+			generates_KeyValPair <- thisModule.getKeyValuePair(k.uses_KeyValueGenerator)
+			
+	  )
+}
+
+lazy rule getInputSplit{
+	from 
+		k: DTSM!RecordReader
+	to 
+		l: DDSM!InputSplit(
+		    length <- k.startOffset, --k.end-k.startOffset,     ask Damian about specifications of startoffset and end
+			location <- k.pos.toString()
+			
+		)
+		   
+}
+
+
+lazy rule getKeyValuePair{
+	from
+	     p:DTSM!KeyValueGenerator
+		 
+	to
+	     w:DDSM!RecordReader(
+	     	
+	        generates_KeyValPair <- p.generates -> collect(e| thisModule.getKeyValues(e))
+	     )
+}
+
+	     	
+lazy rule getKeyValues{
+	     	from 
+			 s: DTSM!KeyValuePairs
+			to
+			  t:DDSM!KeyValuePair(
+			  	key <- s.key,
+				value <- s.value				
+			  )	     
+}
+
+
+
+
+
+
+
+
+	

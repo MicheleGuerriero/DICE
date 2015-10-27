@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:HadoopMR="www.dice.polimi.it">
+  <HadoopMR:WordCountExample SetDBInputFormat="/1">
+    <SetDBOutputFormat InputTableName="WordCountTBL"/>
+    <SetDBConfig JDBC_DriverClass="com.mysql.jdbc.Driver" UserName="root" DB_AccessURL="jdbc:mysql://localhost:3306/WordCountDB" password="cloudera"/>
+    <SetInputFormat MinSplitSize="32" MaxSplitSize="256" isSplitable="true">
+      <uses_RecordReader Progress="50.0" pos="120">
+        <generates_KeyValPair xsi:type="HadoopMR:RecordReader">
+          <generates_KeyValPair key="text" value="IntWritable"/>
+          <generates_KeyValPair key="test" value="test"/>
+        </generates_KeyValPair>
+        <consumesInputSplit length="50">
+          <location>120</location>
+        </consumesInputSplit>
+      </uses_RecordReader>
+    </SetInputFormat>
+    <setPartitionerClass partitioneNumber="2"/>
+    <setMapperClass mapper="mymapper"/>
+    <setReducerClass reducer="myreducer"/>
+    <SubmitJob MapTaskReport="myTaskReport" ReduceTaskReport="myReduceReport" JobID="123" clusterStatus="clusterstatus" jobProgress="50" jobQueue="jobQueue">
+      <runningJobs>job1</runningJobs>
+      <runningJobs>job2</runningJobs>
+    </SubmitJob>
+    <setsJobConf mapperClass="mymapperclass" reducerClass="MyreducerClass" jobName="myjname" combinerClass="mycombiner" numOfReduceTasks="1" inputFormat="myinpformat" outputFormat="myoutputformat" outputKeyClass="myoutputkclass" outputValueClass="myoutputValclass" partitionerClass="myjoiner"/>
+  </HadoopMR:WordCountExample>
+  <HadoopMR:DBInputFormat TableName="WordCountTBL" WhereConditions="My Where Condition" Orderby="feild1" connection="MyDBConnection"/>
+</xmi:XMI>

@@ -1,0 +1,168 @@
+-- @path HmrDDSM=/DiceSeptember/model/DDSM/Cloud.ecore
+-- @path HmrDTSM=/DiceSeptember/model/DTSM-HMR/HMR_DTSM.ecore
+
+module HadoopDTSM2DDSM;
+create OUT : HmrDDSM from IN : HmrDTSM;
+
+helper context HmrDTSM!HMR_DTSM def:SlavenodeType : String=
+	if not self.setMapperClass.oclIsUndefined() then
+		self.setMapperClass.type
+	else
+	   if not self.setReducerClass.oclIsUndefined() then
+			self.setReducerClass.type
+		else
+			if not self.setPartitionerClass.oclIsUndefined() then
+				self.setPartitionerClass.type
+		    else
+		    	''
+			endif
+	  endif
+	endif ;
+
+
+
+helper context HmrDTSM!HMR_DTSM def:MasternodeType : String=
+	if not self.SubmitJob.oclIsUndefined() then
+		self.SubmitJob.type
+	else
+	   if not self.setsJobConf.oclIsUndefined() then
+			self.setsJobConf.type
+		else
+			''
+	  endif
+	endif ;
+
+
+helper context HmrDTSM!HMR_DTSM def: databasenodeType : String=
+	if not self.SetDBConfig.oclIsUndefined() then
+		self.SetDBConfig.type
+	else
+	   if not self.SetDBInputFormat.oclIsUndefined() then
+			self.SetDBInputFormat.type
+	   else
+			if not self.SetDBOutputFormat.oclIsUndefined() then
+				self.SetDBOutputFormat.type
+			else ''
+		    endif
+	   endif
+	endif ;
+
+
+
+
+rule HadoopDTSM2DDSM{	
+	from 
+		s: HmrDTSM!HMR_DTSM
+	to 
+		t: HmrDDSM!HMR_DDSM(
+			
+			hasSlaves <- thisModule.getSlaveNodes(s),
+			hasMasterNode <- thisModule.getMasteNode(s),
+			hasRelationships <- thisModule.getComponentsRelationships(s)
+			
+		)
+}
+
+
+
+lazy rule getSlaveNodes{
+	from
+	    i: HmrDTSM!HMR_DTSM
+	to 
+		j: HmrDDSM!SlaveNode(
+		    slaveType <- i.SlavenodeType,
+			contains_MySQL <- thisModule.getMySQLNode(i),
+			contains_worker_chef <- thisModule.getWorkerChef(i)
+			
+		)
+}
+
+lazy rule getWorkerChef{
+	from
+	    i: HmrDTSM!HMR_DTSM
+	to 
+		j: HmrDDSM!worker_chef(		    
+			type <- 'workerchef'			
+		
+		)
+}
+
+
+lazy rule getMySQLNode{
+	from
+	    i: HmrDTSM!HMR_DTSM-- write a validator here
+	to 
+		j: HmrDDSM!MySQL(		    
+			type  <- i.databasenodeType,
+			dbuser <- i.SetDBConfig.UserName,
+			dbpassword <- i.SetDBConfig.password,
+			JDBC_DriverClass <- i.SetDBConfig.JDBC_DriverClass
+			--continue the mapping		
+			
+		)
+}
+
+
+
+
+lazy rule getMasteNode{
+	from
+	    i: HmrDTSM!HMR_DTSM
+	to 
+		j: HmrDDSM!MasterNode(
+		    masterType <- i.MasternodeType, 
+			contains_config <- thisModule.getConfigNode(i),
+			contains_hadoopRunner <- thisModule.getHadoopRunner(i),
+			contains_master_chef <- thisModule.getMasterChef(i)
+		)
+}
+
+
+lazy rule getConfigNode{
+	from
+	    i: HmrDTSM!HMR_DTSM
+	to 
+		j: HmrDDSM!config(
+			type <- 'config'
+	
+		)
+}
+
+
+
+lazy rule getMasterChef{
+	from
+	    i: HmrDTSM!HMR_DTSM
+	to 
+		j: HmrDDSM!master_chef(
+			type <- 'masterChef'
+	
+		)
+}
+
+
+lazy rule getHadoopRunner{
+	from
+	    i: HmrDTSM!HMR_DTSM
+	to 
+		j: HmrDDSM!hadooprunner(
+			type <- 'hadoopRunner'
+	
+		)
+}
+
+lazy rule getComponentsRelationships{
+	from
+	    i: HmrDTSM!HMR_DTSM
+	to 
+		j: HmrDDSM!NodeRelationsipComponent(
+			relationName <- ''
+			
+	
+		)
+}
+
+
+
+
+
