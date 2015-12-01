@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<_12:TServiceTemplate xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:_12="http://docs.oasis-open.org/tosca/ns/2011/12" id="tosca_definitions_version" name="cloudify_dsl_1_0">
+  <topologyTemplate>
+    <nodeTemplate id="linuxServer1" type="platform">
+      <properties>
+        <property name="net_uuid">
+          <value>netuuidvalue</value>
+        </property>
+        <property name="cpu_count"/>
+        <property name="ram_amount"/>
+        <property name="key_uuid"/>
+        <property name="wait_started_timeout"/>
+        <property name="wait_started_interval"/>
+        <property name="password"/>
+        <property name="customer"/>
+        <property name="api_uuid"/>
+        <property name="server_type"/>
+        <property name="url"/>
+        <property name="image_uuid"/>
+        <property name="ce_cert"/>
+      </properties>
+    </nodeTemplate>
+    <nodeTemplate id="config" type="config type">
+      <nodeHasRelations name="config" targetNamespace="server1"/>
+    </nodeTemplate>
+    <nodeTemplate id="linuxServer2" type="platform">
+      <properties>
+        <property name="net_uuid"/>
+        <property name="cpu_count"/>
+        <property name="ram_amount"/>
+        <property name="key_uuid"/>
+        <property name="wait_started_timeout"/>
+        <property name="wait_started_interval"/>
+        <property name="password"/>
+        <property name="customer"/>
+        <property name="api_uuid"/>
+        <property name="server_type"/>
+        <property name="url"/>
+        <property name="image_uuid"/>
+        <property name="ce_cert"/>
+      </properties>
+    </nodeTemplate>
+    <nodeTemplate id="server1_chef" type="server1_chef">
+      <properties>
+        <property name="version"/>
+        <property name="chef_server_url"/>
+        <property name="environment"/>
+        <property name="validation_client_name"/>
+        <property name="validation_client_name"/>
+        <property name="node_name_prefix"/>
+        <property name="node_name_suffix"/>
+        <property name="attributes"/>
+        <property name="runlists"/>
+        <property name="chef_cookbooks">
+          <value>recipe[apt::default]</value>
+          <value>recipe[java::default]</value>
+          <value>recipe[server1::default]</value>
+          <value>recipe[RabitMQ::default]</value>
+          <value>recipe[hadoop::spark_master]</value>
+          <value>recipe[hadoop::hadoop_hdfs_namenode]</value>
+          <value>recipe[hadoop::hadoop_yarn_resourcemanager]</value>
+        </property>
+      </properties>
+    </nodeTemplate>
+    <nodeTemplate id="server2_chef" type="server2_chef">
+      <properties>
+        <property name="version"/>
+        <property name="chef_server_url"/>
+        <property name="environment"/>
+        <property name="validation_client_name"/>
+        <property name="validation_client_name"/>
+        <property name="node_name_prefix"/>
+        <property name="node_name_suffix"/>
+        <property name="attributes"/>
+        <property name="runlists"/>
+        <property name="chef_cookbooks">
+          <value>recipe[apt::default]</value>
+          <value>recipe[java::default]</value>
+          <value>recipe[server2::default]</value>
+        </property>
+      </properties>
+    </nodeTemplate>
+    <hasInputs name="chef_version" description="">
+      <value>{}</value>
+    </hasInputs>
+    <hasInputs name="chef_server">
+      <value>{}</value>
+    </hasInputs>
+    <hasInputs name="chef_validation_user">
+      <value>{}</value>
+    </hasInputs>
+    <hasoutPuts name="server1IPaddress"/>
+    <hasoutPuts name="Server2IPaddress"/>
+    <hasoutPuts name="PMS_IP_Address"/>
+  </topologyTemplate>
+  <hasImports>
+    <value>http://www.getcloudify.org/spec/cloudify/3.3m4/types.yaml</value>
+    <value>https://raw.githubusercontent.com/buhanec/cloudify-chef-plugin/devel/plugin.yaml</value>
+    <value>https://raw.githubusercontent.com/buhanec/cloudify-flexiant-plugin/3.3m2/plugin.yaml</value>
+  </hasImports>
+</_12:TServiceTemplate>

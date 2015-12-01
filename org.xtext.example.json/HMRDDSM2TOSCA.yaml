@@ -1,0 +1,93 @@
+Imports: ['http://www.getcloudify.org/spec/cloudify/3.3m4/types.yaml', 'https://raw.githubusercontent.com/buhanec/cloudify-chef-plugin/devel/plugin.yaml',
+  'https://raw.githubusercontent.com/buhanec/cloudify-flexiant-plugin/3.3m2/plugin.yaml']
+inputs:
+  chef_server: {default: defaultValue, description: Default description}
+  chef_version: {default: defaultValue, description: default description}
+node_templates:
+  Master:
+    properties:
+      api_uuid: [ApiID]
+      ce_cert: [Certificate]
+      cpu_count: ['4']
+      customer: [Customer]
+      image_uuid: [imageID]
+      key_uuid: [KeyID]
+      net_uuid: [NetID]
+      password: ['123456']
+      ram_amount: [4G]
+      server_type: [cloudify.flexiant.nodes.Server]
+      url: [URL]
+      wait_started_interval: ['30']
+      wait_started_timeout: ['3']
+    type: MasterNode
+  Workernode:
+    instances: {deploy: '2'}
+    properties:
+      api_uuid: [api_uuid]
+      ce_cert: [certificate]
+      cpu_count: ['12']
+      customer: [customer]
+      image_uuid: [imageID]
+      key_uuid: [KeyID]
+      net_uuid: [NetID]
+      password: ['123456']
+      ram_amount: [16G]
+      server_type: [server_type]
+      url: [URL]
+      wait_started_interval: ['30']
+      wait_started_timeout: ['6']
+    type: cloudify.flexiant.nodes.Server
+  config:
+    relationships:
+    - {target: master, type: config_in_master}
+    - {target: worker, type: config_on_worker}
+    type: config
+  master_stack:
+    properties:
+      attributes: []
+      chef_cookbooks: ['recipe[apt::default]', 'recipe[java::default]', 'recipe[hadoop::hadoop_hdfs_namenode]',
+        'recipe[hadoop::hadoop_yarn_resourcemanager]', 'recipe[hadoop::hadoop_mapreduce_historyserver]']
+      chef_server_url: []
+      environment: []
+      node_name_prefix: []
+      node_name_suffix: []
+      runlists: []
+      validation_client_name: []
+      version: []
+    relationships:
+    - {target: master, type: cloudify.relationships.contained_in}
+    - {target: config, type: stack_on_config}
+    type: chef_node
+  worker_stack:
+    properties:
+      attributes: []
+      chef_cookbooks: ['recipe[apt::default]', 'recipe[java::default]', 'recipe[hadoop::hadoop_hdfs_datanode]',
+        'recipe[hadoop::hadoop_yarn_nodemanager]']
+      chef_server_url: []
+      environment: []
+      node_name_prefix: []
+      node_name_suffix: []
+      runlists: []
+      validation_client_name: []
+      version: []
+    relationships:
+    - {target: worker, type: cloudify.relationships.contained_in}
+    - {target: config, type: stack_on_config}
+    type: chef_node
+outputs:
+  mapred_job_tracker:
+    value:
+      get_attribute: [master_stack, chef_attributes, hadoop, mapred_site, mapred.job.tracker]
+  mapred_jobhistory:
+    value:
+      get_attribute: [master_stack, chef_attributes, hadoop, mapred_site, mapreduce.jobhistory.address]
+  mapred_jobhistory_webui:
+    value:
+      get_attribute: [master_stack, chef_attributes, hadoop, mapred_site, mapreduce.jobhistory.webapp.address]
+  master_ip:
+    value:
+      get_attribute: [config, master_ip]
+  worker_ips:
+    value:
+      get_attribute: [config, worker_ips]
+tosca_definitions_version: cloudify_dsl_1_0

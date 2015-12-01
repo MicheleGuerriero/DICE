@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<it.polimi.modaclouds.resourcemodel.cloud:Posi_DDSM xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:it.polimi.modaclouds.resourcemodel.cloud="http://cloud/1.0">
+  <hasLinuxServer1 name="linuxServer1">
+    <contains_config name="config" type="config type"/>
+    <contains_parsers name="idofparser1" type="idofparser1" InputRate="1256" MaxPriority="maxpriorutyThread"/>
+    <contains_parsers name="idodparser2" type="idodparser2" InputRate="500" MaxPriority="maxPriority"/>
+    <contains_server1_chef type="server1_chef"/>
+    <containsEventIntegrator name="eventintegratorName"/>
+    <contains_RabitMQ rabbitmqNodeIpAddress="10.20.30.40" rabbitmqNodePport="2023" rabbitmqDistPort="" rabbitmqNodename="rabitMQ" rabbitmqUseLongname="rabitMQlongname" hostName=""/>
+  </hasLinuxServer1>
+  <hasLinuxServer2 name="linuxServer2">
+    <contains_server2_chef type="server2_chef"/>
+    <hasCEP name="CEP" type="cloudify.nodes.comptation"/>
+  </hasLinuxServer2>
+  <hasPMS_ApplicationSrv>
+    <containsPMS name="pmsname"/>
+    <contains_applicationSrv_chef name="Application Server Chef"/>
+  </hasPMS_ApplicationSrv>
+  <hasDatabaseServer>
+    <containsOracleDB name="relationalDatabase"/>
+    <contains_DB_chef name="DBServer_Chef"/>
+  </hasDatabaseServer>
+</it.polimi.modaclouds.resourcemodel.cloud:Posi_DDSM>

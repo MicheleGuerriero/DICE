@@ -1,0 +1,159 @@
+{
+	"tosca_definitions_version" : "cloudify_dsl_1_0",
+	"Imports": [ "http://www.getcloudify.org/spec/cloudify/3.3m4/types.yaml",
+	"https://raw.githubusercontent.com/buhanec/cloudify-chef-plugin/devel/plugin.yaml",
+	"https://raw.githubusercontent.com/buhanec/cloudify-flexiant-plugin/3.3m2/plugin.yaml"
+	],
+	"inputs": {
+		"chef_version" : {
+			"default": "defaultValue" ,"description": "default description"
+		},
+		"chef_server" : {
+			"default": "defaultValue" ,"description": "Default description"
+		}
+	}
+	,"node_templates": {
+		"Master" : {
+			"type": "MasterNode",
+			"properties": {
+				"net_uuid" : [ "NetID" ],
+				"cpu_count" : [ "4" ],
+				"ram_amount" : [ "4G" ],
+				"key_uuid" : [ "KeyID" ],
+				"wait_started_timeout" : [ "3" ],
+				"wait_started_interval" : [ "30" ],
+				"password" : [ "123456" ],
+				"customer" : [ "Customer" ],
+				"api_uuid" : [ "ApiID" ],
+				"server_type" : [ "cloudify.flexiant.nodes.Server" ],
+				"url" : [ "URL" ],
+				"image_uuid" : [ "imageID" ],
+				"ce_cert" : [ "Certificate" ]
+			}
+			},
+			"config" : {
+				"type": "config",
+				"relationships":  [ {
+					"type": "config_in_master",
+					"target": "master"
+				},
+				{
+					"type": "config_on_worker",
+					"target": "worker"
+				}
+				] },
+				"Workernode" : {
+					"type": "cloudify.flexiant.nodes.Server" ,"instances":{  "deploy": "2"
+				},
+				"properties": {
+					"net_uuid" : [ "NetID" ],
+					"cpu_count" : [ "12" ],
+					"ram_amount" : [ "16G" ],
+					"key_uuid" : [ "KeyID" ],
+					"wait_started_timeout" : [ "6" ],
+					"wait_started_interval" : [ "30" ],
+					"password" : [ "123456" ],
+					"customer" : [ "customer" ],
+					"api_uuid" : [ "api_uuid" ],
+					"server_type" : [ "server_type" ],
+					"url" : [ "URL" ],
+					"image_uuid" : [ "imageID" ],
+					"ce_cert" : [ "certificate" ]
+				}
+				},
+				"master_stack" : {
+					"type": "chef_node",
+					"properties": {
+						"version" : [ ],
+						"chef_server_url" : [ ],
+						"environment" : [ ],
+						"validation_client_name" : [ ],
+						"validation_client_name" : [ ],
+						"node_name_prefix" : [ ],
+						"node_name_suffix" : [ ],
+						"attributes" : [ ],
+						"runlists" : [ ],
+						"chef_cookbooks" : [ "recipe[apt::default]",
+						"recipe[java::default]",
+						"recipe[hadoop::hadoop_hdfs_namenode]",
+						"recipe[hadoop::hadoop_yarn_resourcemanager]",
+						"recipe[hadoop::hadoop_mapreduce_historyserver]" ]
+					},
+					"relationships":  [ {
+						"type": "cloudify.relationships.contained_in",
+						"target": "master"
+					},
+					{
+						"type": "stack_on_config",
+						"target": "config"
+					}
+					] },
+					"worker_stack" : {
+						"type": "chef_node",
+						"properties": {
+							"version" : [ ],
+							"chef_server_url" : [ ],
+							"environment" : [ ],
+							"validation_client_name" : [ ],
+							"validation_client_name" : [ ],
+							"node_name_prefix" : [ ],
+							"node_name_suffix" : [ ],
+							"attributes" : [ ],
+							"runlists" : [ ],
+							"chef_cookbooks" : [ "recipe[apt::default]",
+							"recipe[java::default]",
+							"recipe[hadoop::hadoop_hdfs_datanode]",
+							"recipe[hadoop::hadoop_yarn_nodemanager]" ]
+						},
+						"relationships":  [ {
+							"type": "cloudify.relationships.contained_in",
+							"target": "worker"
+						},
+						{
+							"type": "stack_on_config",
+							"target": "config"
+						}
+						] }
+					},
+					"outputs": {
+						"mapred_jobhistory" : {
+							"value": {
+								"get_attribute": [ "master_stack",
+								"chef_attributes",
+								"hadoop",
+								"mapred_site",
+								"mapreduce.jobhistory.address" ]
+							}
+						},
+						"mapred_jobhistory_webui" : {
+							"value": {
+								"get_attribute": [ "master_stack",
+								"chef_attributes",
+								"hadoop",
+								"mapred_site",
+								"mapreduce.jobhistory.webapp.address" ]
+							}
+						},
+						"mapred_job_tracker" : {
+							"value": {
+								"get_attribute": [ "master_stack",
+								"chef_attributes",
+								"hadoop",
+								"mapred_site",
+								"mapred.job.tracker" ]
+							}
+						},
+						"master_ip" : {
+							"value": {
+								"get_attribute": [ "config",
+								"master_ip" ]
+							}
+						},
+						"worker_ips" : {
+							"value": {
+								"get_attribute": [ "config",
+								"worker_ips" ]
+							}
+						}
+					}
+				}

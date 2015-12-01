@@ -1,0 +1,234 @@
+-- @path DTSM=/DiceModelingProject/model/DTSM-Posidonia/PosiDTSM.ecore
+-- @path DDSM=/DiceModelingProject/model/DDSM-posidonia/Cloud.ecore
+
+
+module PosidoniaDTSM2DDSM;
+create OUT : DDSM from IN : DTSM;
+
+rule PosiDTSM2DDSM{	
+	from 
+		s: DTSM!PosidoniaSystem
+	to 
+		t: DDSM!Posi_DDSM(
+			
+			hasLinuxServer1 <- thisModule.getlinuxServer1(s),
+			hasLinuxServer2 <- thisModule.getlinuxServer2(s),
+			hasDatabaseServer <- thisModule.getDatabaseServer(s),
+			hasPMS_ApplicationSrv <- thisModule.getApplicatioServer(s)
+		)
+}
+
+
+
+lazy rule getApplicatioServer{
+	from
+	    i: DTSM!PosidoniaSystem
+	to 
+		j: DDSM!ApplicationsServer(
+			
+			containsPMS <- thisModule.getPMS(i.HasPms),
+			contains_applicationSrv_chef <- thisModule.getApplicationServerChef(i)	
+		  
+		)
+}
+
+lazy rule getApplicationServerChef{
+	from
+	    i: DTSM!PosidoniaSystem
+	to 
+		j: DDSM!PMS_ApplicationServer_Chef(
+			name <- 'Application Server Chef'		  
+		)
+}
+
+
+
+lazy rule getPMS{
+	from
+	    i: DTSM!PMS
+	to 
+		j: DDSM!PMS(
+			name <- i.PName		
+		  
+		)
+}
+
+
+
+lazy rule getDatabaseServer{
+	from
+	    i: DTSM!PosidoniaSystem
+	to 
+		j: DDSM!DBServer(
+		   containsOracleDB <- thisModule.getRDBMS(i.HasRdsms),
+		   contains_DB_chef <- thisModule.getRDBMSchef(i)
+		   --containsNoSQL <- thisModule.getNoSqlDB() -- this part is commented as it is not implemented by posidonia community yet, so we don't know which NoSql DB will be used currently
+		   
+		)
+}
+
+
+lazy rule getRDBMSchef{
+	from
+	    i: DTSM!PosidoniaSystem
+	to 
+		j: DDSM!DBServer_chef(
+		  name <- 'DBServer_Chef'	  
+		  
+		)
+}
+
+lazy rule getRDBMS{
+	from
+	    i: DTSM!RDBMS
+	to 
+		j: DDSM!OracleDB(
+		  name <- i.St2Name		  
+		  
+		)
+}
+
+
+lazy rule getlinuxServer2{
+	from
+	    i: DTSM!PosidoniaSystem
+	to 
+		j: DDSM!Server2(
+		  name <- 'linuxServer2',
+		  contains_server2_chef  <- thisModule.getServer2chef(i),
+		  hasCEP <- thisModule.getCEP(i.HasCep)
+			
+		)
+}
+
+
+
+lazy rule getCEP{
+	from
+	    i: DTSM!CEP
+	to 
+		j: DDSM!CEP(		    
+			name <- 'CEP',
+			type <- 'cloudify.nodes.comptation'
+		)
+}
+
+
+lazy rule getServer2chef{
+	from
+	    i: DTSM!PosidoniaSystem
+	to 
+		j: DDSM!server2_chef(		    
+			type <- 'server2_chef'		
+		)
+}
+
+
+
+lazy rule getlinuxServer1{
+	from
+	    i: DTSM!PosidoniaSystem
+	to 
+		j: DDSM!Server1(
+		  name <- 'linuxServer1',
+		  contains_server1_chef <- thisModule.getServer1chef(i),
+		  containsEventIntegrator <- thisModule.getEventIntegrator(i.HasEvent),
+		  contains_RabitMQ <- thisModule.getRabitMQ(i.HasChannel),
+		  contains_parsers <- thisModule.getParser1(i.HasParser1),
+		  contains_parsers <- thisModule.getparser2(i.HasParser2),
+		  contains_config <- thisModule.getconfig(i)
+		)
+}
+
+lazy rule getconfig{
+	from
+	    i: DTSM!PosidoniaSystem
+	to 
+		j: DDSM!config(
+			name <- 'config',
+			type <- 'config type'		
+		)
+}
+
+lazy rule getParser1{
+	from
+	    i: DTSM!AISNMEAParser1
+	to 
+		j: DDSM!AIS_NMEA_Parser(
+			name <- i.f2Name,
+			InputRate <- i.InputRate,
+			MaxPriority <- i.MaxPriority,
+			type <- i.f2Name
+		
+			
+		)
+}
+
+lazy rule getparser2{
+	from
+	    i: DTSM!AISNMEAParser2
+	to 
+		j: DDSM!AIS_NMEA_Parser(
+			name <- i.f3Name,
+			InputRate <- i.InputRate.toString(),
+			MaxPriority <- i.MaxPriority,
+			type <- i.f3Name
+		
+			
+		)
+}
+
+
+
+
+
+
+lazy rule getRabitMQ{
+	from
+	    i: DTSM!RabbitMQ
+	to 
+		j: DDSM!RabitMQ(		    
+			rabbitmqUseLongname <- i.rabbitmqUseLongname,
+			rabbitmqNodeIpAddress <- i.rabbitmqNodeIpAddress,
+			rabbitmqNodePport <- i.rabbitmqNodePport,
+			rabbitmqDistPort <- '',
+			rabbitmqNodename <- i.rabbitmqNodename,
+			hostName <- ''
+		)
+}
+
+
+
+lazy rule getEventIntegrator{
+	from
+	    i: DTSM!EvenIntegrator
+	to 
+		j: DDSM!EventIntegrator(		    
+			name <- i.EIName		
+		)
+}
+
+
+
+
+lazy rule getServer1chef{
+	from
+	    i: DTSM!PosidoniaSystem
+	to 
+		j: DDSM!server1_chef(		    
+			type <- 'server1_chef'		
+		)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

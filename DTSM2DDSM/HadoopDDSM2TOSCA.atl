@@ -1,6 +1,6 @@
 -- @nsURI UML=http://www.eclipse.org/uml2/3.0.0/UML
--- @path HmrDDSM=/DiceSeptember/model/DDSM/Cloud.ecore
--- @path HmrTOSCA=/DiceSeptember/model/TOSCA/_12.ecore
+-- @path HmrDDSM=/DiceModelingProject/model/DDSM/Cloud.ecore
+-- @path HmrTOSCA=/DiceModelingProject/model/TOSCA/_12.ecore
 
 module HadoopDDSM2TOSCA;
 create OUT : HmrTOSCA from IN : HmrDDSM;
@@ -16,8 +16,7 @@ rule HadoopDDSM2TOSCA{
 			hasImports <- thisModule.getimports(s),
 			topologyTemplate <- thisModule.getTopologyTemplate(s)
 			--hasRelationship <- s.referenceRelationships() ->  collect(relashtion | thisModule.getserviceRelationShips(relashtion)) --tins part is commented as Xlab decided to put it into their library
-			
-		)
+			)
 }
 
 --complete this part
@@ -73,7 +72,7 @@ lazy rule getMasterNodechef{
 		t: HmrTOSCA!TNodeTemplate(
 			
 		id <- i.name ,		
-		name <- i.name,
+		
 		--nodeHasInterface <- thisModule.getMasterNodeConfigInterface(i),
 		type <- i.type,
 		nodeHasRelations <-i.referenceNodeHasRelations() -> collect(rel| thisModule.getMasterNodeConfigRelationShips(rel)),
@@ -235,7 +234,7 @@ lazy rule getMasterNodeConfigNode{
 		t: HmrTOSCA!TNodeTemplate(
 			
 		id <- i.name ,		
-		name <- i.name,
+		
 		--nodeHasInterface <- thisModule.getMasterNodeConfigInterface(i),  -- as XLab wants to put interfaces in their library this is commented
 		type <- i.type,
 		nodeHasRelations <-i.referenceNodeHasRelations() -> collect(rel| thisModule.getMasterNodeConfigRelationShips(rel))
@@ -340,9 +339,9 @@ lazy rule getSlaveNodeTemplate{
 	to 
 		t: HmrTOSCA!TNodeTemplate(
 			
-		id <- i.name,		
-		name <- i.name,
+		id <- i.name,			
 		type <- i.slaveType,
+		instances <- i.instances.toString(),
 	    properties <- thisModule.getSlaveNodePropertiesType(i)
 			
 		)
@@ -374,8 +373,8 @@ lazy rule getSlaveNodePropertiesType{
 		property <-  thisModule.getMasterNodePropertyserver_type(i),
 		property <-  thisModule.getMasterNodePropertyurl(i),
 		property <-  thisModule.getMasterNodePropertyimage_uuid(i),
-		property <-  thisModule.getMasterNodePropertyce_certificate(i),
-		property <-  thisModule.getSlaveNodepropertydeploy(i)
+		property <-  thisModule.getMasterNodePropertyce_certificate(i)
+		
 		
 			
 		)
@@ -398,7 +397,6 @@ lazy rule getMasterNodeTemplate{
 		t: HmrTOSCA!TNodeTemplate(
 			
 		id <- i.name ,		
-		name <- i.name,
 		type <- i.masterType,
 		properties <- thisModule.getMasterNodePropertiesType(i)
 			

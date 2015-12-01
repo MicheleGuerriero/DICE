@@ -321,7 +321,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference _12.ecore#//TNodeTemplate/deploymentArtifacts"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute _12.ecore#//TNodeTemplate/maxInstances"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute _12.ecore#//TNodeTemplate/minInstances"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute _12.ecore#//TNodeTemplate/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute _12.ecore#//TNodeTemplate/instances"/>
     </genClasses>
     <genClasses ecoreClass="_12.ecore#//TNodeType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference _12.ecore#//TNodeType/requirementDefinitions"/>

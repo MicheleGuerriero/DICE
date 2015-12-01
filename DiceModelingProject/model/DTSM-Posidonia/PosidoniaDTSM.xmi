@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ASCII"?>
+<PosiDTSM:PosidoniaSystem
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:PosiDTSM="platform:/resource/PosidoniaTransformation/TargerMetaModel(DiceDTSM)/PosiDTSM.ecore"
+    xsi:schemaLocation="platform:/resource/PosidoniaTransformation/TargerMetaModel(DiceDTSM)/PosiDTSM.ecore PosiDTSM.ecore">
+  <ResOne PowerSupplyRange="powerspp"
+      BaudRate="123"
+      OutputMessage="outputmessage"
+      DataRate="120"
+      Channelspacing="spacing"
+      WAAS="waasss"
+      UpdateRate="updateRate"
+      HotStart="hotstart"
+      WarmStart="warmstartconfig"
+      ColdStart="coldstart"/>
+  <ResTwo/>
+  <HasParser1
+      InputRate="1256"
+      MaxPriority="maxpriorutyThread"
+      f2Name="idofparser1"/>
+  <HasParser2
+      InputRate="500"
+      MaxPriority="maxPriority"
+      f3Name="idodparser2"/>
+  <HasChannel
+      rabbitmqNodeIpAddress="10.20.30.40"
+      rabbitmqNodePport="2023"
+      rabbitmqDistPort="2024"
+      rabbitmqNodename="rabitMQ"
+      rabbitmqUseLongname="rabitMQlongname"
+      ChannelName="rabitMQ"/>
+  <HasEvent
+      EIName="eventintegratorName"/>
+  <HasPms PName="pmsname"/>
+  <HasRdsms
+      St2Name="relationalDatabase"/>
+  <HasLogReader
+      xsi:type="PosiDTSM:NoSqlDB"
+      StorageName="noSqlDatabase"/>
+</PosiDTSM:PosidoniaSystem>

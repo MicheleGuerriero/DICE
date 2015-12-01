@@ -1,5 +1,5 @@
--- @path OryxDTSM=/DiceSeptember/model/DTSM-Oryx/OryxDTSM.ecore
--- @path OryxDDSM=/DiceSeptember/model/DDSM-oryx/Cloud.ecore
+-- @path OryxDTSM=/DiceModelingProject/model/DTSM-Oryx/OryxDTSM.ecore
+-- @path OryxDDSM=/DiceModelingProject/model/DDSM-oryx/Cloud.ecore
 
 module OryxDTSM2DDSM;
 create OUT : OryxDDSM from IN : OryxDTSM;
@@ -53,14 +53,14 @@ lazy rule getWorkerChef{
 	to 
 		j: OryxDDSM!worker_chef(
 			type <- 'workerChef',
-			chef_cook_books <- '- \'recipe[apt::default]\'',
-			chef_cook_books <- '- \'recipe[java::default]\'',
-			chef_cook_books <- '- \'recipe[hadoop::hadoop_hdfs_datanode]\'',
-			chef_cook_books <- '- \'recipe[hadoop::hadoop_yarn_nodemanager]\'',		
-			chef_cook_books <- '- \'recipe[hadoop::zookeeper_server]\'',
-			chef_cook_books <- '- \'recipe[hadoop::spark_worker]\'',
-			chef_cook_books <- '- \'recipe[apache_kafka::default]\'',
-			chef_cook_books <- '- \'recipe[collectd-ng::default]\''
+			chef_cook_books <- 'recipe[apt::default]',
+			chef_cook_books <- 'recipe[java::default]',
+			chef_cook_books <- 'recipe[hadoop::hadoop_hdfs_datanode]',
+			chef_cook_books <- 'recipe[hadoop::hadoop_yarn_nodemanager]',		
+			chef_cook_books <- 'recipe[hadoop::zookeeper_server]',
+			chef_cook_books <- 'recipe[hadoop::spark_worker]',
+			chef_cook_books <- 'recipe[apache_kafka::default]',
+			chef_cook_books <- 'recipe[collectd-ng::default]'
 	
 		)
 }
@@ -112,15 +112,15 @@ lazy rule getMasterChef{
 	to 
 		j: OryxDDSM!master_chef(
 			type <- 'masterChef',		
-			chef_cook_books <- '- \'recipe[apt::default]\'',
-			chef_cook_books <- '- \'recipe[java::default]\'',
-			chef_cook_books <- '- \'recipe[hadoop::hadoop_hdfs_namenode]\'',
-			chef_cook_books <- '- \'recipe[hadoop::hadoop_yarn_resourcemanager]\'',
-			chef_cook_books <- '- \'recipe[hadoop::hadoop_mapreduce_historyserver]\'',
-			chef_cook_books <- '- \'recipe[hadoop::zookeeper_server]\'',
-			chef_cook_books <- '- \'recipe[hadoop::spark_master]\'',
-			chef_cook_books <- '- \'recipe[apache_kafka::default]\'',
-			chef_cook_books <- '- \'recipe[collectd-ng::default]\''
+			chef_cook_books <- 'recipe[apt::default]',
+			chef_cook_books <- 'recipe[java::default]',
+			chef_cook_books <- 'recipe[hadoop::hadoop_hdfs_namenode]',
+			chef_cook_books <- 'recipe[hadoop::hadoop_yarn_resourcemanager]',
+			chef_cook_books <- 'recipe[hadoop::hadoop_mapreduce_historyserver]',
+			chef_cook_books <- 'recipe[hadoop::zookeeper_server]',
+			chef_cook_books <- 'recipe[hadoop::spark_master]',
+			chef_cook_books <- 'recipe[apache_kafka::default]',
+			chef_cook_books <- 'recipe[collectd-ng::default]'
 	
 		)
 }

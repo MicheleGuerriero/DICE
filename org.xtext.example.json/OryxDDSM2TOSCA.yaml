@@ -1,0 +1,103 @@
+Imports: ['http://www.getcloudify.org/spec/cloudify/3.3m4/types.yaml', 'https://raw.githubusercontent.com/buhanec/cloudify-chef-plugin/devel/plugin.yaml',
+  'https://raw.githubusercontent.com/buhanec/cloudify-flexiant-plugin/3.3m2/plugin.yaml']
+inputs:
+  chef_server: {}
+  chef_validation_user: {}
+  chef_version: {default: ''}
+node_templates:
+  config:
+    relationships:
+    - {target: master, type: config_in_master}
+    - {target: worker, type: config_on_worker}
+    type: config
+  master:
+    properties:
+      api_uuid: ['fco_api_uuid ']
+      ce_cert: ['fco_ca_cert ']
+      cpu_count: ['fco_cpu_count ']
+      customer: ['fco_customer ']
+      image_uuid: ['fco_image ']
+      key_uuid: ['fco_key_uuid ']
+      net_uuid: [fco_network]
+      password: ['fco_password ']
+      ram_amount: ['fco_ram_amount ']
+      server_type: ['fco_server_type ']
+      url: ['fco_url ']
+      wait_started_interval: ['30']
+      wait_started_timeout: ['60']
+    type: masternode
+  master_stack:
+    properties:
+      attributes: []
+      chef_cookbooks: ['recipe[apt::default]', 'recipe[java::default]', 'recipe[hadoop::hadoop_hdfs_namenode]',
+        'recipe[hadoop::hadoop_yarn_resourcemanager]', 'recipe[hadoop::hadoop_mapreduce_historyserver]',
+        'recipe[hadoop::zookeeper_server]', 'recipe[hadoop::spark_master]', 'recipe[apache_kafka::default]',
+        'recipe[collectd-ng::default]']
+      chef_server_url: []
+      environment: []
+      node_name_prefix: []
+      node_name_suffix: []
+      runlists: []
+      validation_client_name: []
+      version: []
+    relationships:
+    - {target: master, type: cloudify.relationships.contained_in}
+    - {target: config, type: stack_on_config}
+    type: masterChef
+  oryx:
+    relationships:
+    - {target: master, type: cloudify.relationships.contained_in}
+    - {target: master_stack, type: oryx_on_master}
+    - {target: worker_stack, type: cloudify.relationships.depends_on}
+    type: ' cloudify.nodes.ApplicationServer'
+  worker:
+    properties:
+      api_uuid: ['fco_api_uuid ']
+      ce_cert: ['fco_ca_cert ']
+      cpu_count: ['fco_cpu_count ']
+      customer: [customer]
+      deploy: ['2']
+      image_uuid: ['fco_image ']
+      key_uuid: ['fco_key_uuid ']
+      net_uuid: ['fco_network ']
+      password: [password]
+      ram_amount: ['fco_ram_amount ']
+      server_type: ['fco_server_type ']
+      url: [url]
+      wait_started_interval: []
+      wait_started_timeout: []
+    type: WorkerNode
+  worker_stack:
+    properties:
+      attributes: []
+      chef_cookbooks: ['recipe[apt::default]', 'recipe[java::default]', 'recipe[hadoop::hadoop_hdfs_datanode]',
+        'recipe[hadoop::hadoop_yarn_nodemanager]', 'recipe[hadoop::zookeeper_server]',
+        'recipe[hadoop::spark_worker]', 'recipe[apache_kafka::default]', 'recipe[collectd-ng::default]']
+      chef_server_url: []
+      environment: []
+      node_name_prefix: []
+      node_name_suffix: []
+      runlists: []
+      validation_client_name: []
+      version: []
+    relationships:
+    - {target: worker, type: cloudify.relationships.contained_in}
+    - {target: config, type: stack_on_config}
+    type: chef_node
+outputs:
+  ' mapred_jobhistory_webui':
+    value:
+      get_attribute: [master_stack, chef_attributes, hadoop, mapred_site, mapreduce.jobhistory.webapp.address]
+  mapred_job_tracker:
+    value:
+      get_attribute: [master_stack, chef_attributes, hadoop, mapred_site, mapred.job.tracker]
+  mapred_jobhistory:
+    value:
+      get_attribute: [master_stack, chef_attributes, hadoop, mapred_site, mapreduce.jobhistory.address]
+  master_ip:
+    value:
+      get_attribute: [master_ip, config]
+  worker_ips:
+    value:
+      get_attribute: [worker_ips, config]
+tosca_definitions_version: cloudify_dsl_1_0

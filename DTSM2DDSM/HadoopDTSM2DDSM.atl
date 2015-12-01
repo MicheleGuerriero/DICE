@@ -1,5 +1,5 @@
--- @path HmrDDSM=/DiceSeptember/model/DDSM/Cloud.ecore
--- @path HmrDTSM=/DiceSeptember/model/DTSM-HMR/HMR_DTSM.ecore
+-- @path HmrDDSM=/DiceModelingProject/model/DDSM/Cloud.ecore
+-- @path HmrDTSM=/DiceModelingProject/model/DTSM-HMR/HMR_DTSM.ecore
 
 module HadoopDTSM2DDSM;
 create OUT : HmrDDSM from IN : HmrDTSM;
@@ -97,7 +97,7 @@ lazy rule getMySQLNode{
 			dbuser <- i.SetDBConfig.UserName,
 			dbpassword <- i.SetDBConfig.password,
 			JDBC_DriverClass <- i.SetDBConfig.JDBC_DriverClass
-			--continue the mapping		
+			
 			
 		)
 }

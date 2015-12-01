@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<_12:TServiceTemplate xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:_12="http://docs.oasis-open.org/tosca/ns/2011/12" id="tosca_definitions_version" name="cloudify_dsl_1_0">
+  <topologyTemplate>
+    <nodeTemplate id="Master" type="MasterNode">
+      <properties>
+        <property name="net_uuid">
+          <value>NetID</value>
+        </property>
+        <property name="cpu_count">
+          <value>4</value>
+        </property>
+        <property name="ram_amount">
+          <value>4G</value>
+        </property>
+        <property name="key_uuid">
+          <value>KeyID</value>
+        </property>
+        <property name="wait_started_timeout">
+          <value>3</value>
+        </property>
+        <property name="wait_started_interval">
+          <value>30</value>
+        </property>
+        <property name="password">
+          <value>123456</value>
+        </property>
+        <property name="customer">
+          <value>Customer</value>
+        </property>
+        <property name="api_uuid">
+          <value>ApiID</value>
+        </property>
+        <property name="server_type">
+          <value>cloudify.flexiant.nodes.Server</value>
+        </property>
+        <property name="url">
+          <value>URL</value>
+        </property>
+        <property name="image_uuid">
+          <value>imageID</value>
+        </property>
+        <property name="ce_cert">
+          <value>Certificate</value>
+        </property>
+      </properties>
+    </nodeTemplate>
+    <nodeTemplate id="config" type="config">
+      <nodeHasRelations name="config_in_master" targetNamespace="master"/>
+      <nodeHasRelations name="config_on_worker" targetNamespace="worker"/>
+    </nodeTemplate>
+    <nodeTemplate id="Workernode" type="cloudify.flexiant.nodes.Server" instances="2">
+      <properties>
+        <property name="net_uuid">
+          <value>NetID</value>
+        </property>
+        <property name="cpu_count">
+          <value>12</value>
+        </property>
+        <property name="ram_amount">
+          <value>16G</value>
+        </property>
+        <property name="key_uuid">
+          <value>KeyID</value>
+        </property>
+        <property name="wait_started_timeout">
+          <value>6</value>
+        </property>
+        <property name="wait_started_interval">
+          <value>30</value>
+        </property>
+        <property name="password">
+          <value>123456</value>
+        </property>
+        <property name="customer">
+          <value>customer</value>
+        </property>
+        <property name="api_uuid">
+          <value>api_uuid</value>
+        </property>
+        <property name="server_type">
+          <value>server_type</value>
+        </property>
+        <property name="url">
+          <value>URL</value>
+        </property>
+        <property name="image_uuid">
+          <value>imageID</value>
+        </property>
+        <property name="ce_cert">
+          <value>certificate</value>
+        </property>
+      </properties>
+    </nodeTemplate>
+    <nodeTemplate id="master_stack" type="chef_node">
+      <properties>
+        <property name="version"/>
+        <property name="chef_server_url"/>
+        <property name="environment"/>
+        <property name="validation_client_name"/>
+        <property name="validation_client_name"/>
+        <property name="node_name_prefix"/>
+        <property name="node_name_suffix"/>
+        <property name="attributes"/>
+        <property name="runlists"/>
+        <property name="chef_cookbooks">
+          <value>recipe[apt::default]</value>
+          <value>recipe[java::default]</value>
+          <value>recipe[hadoop::hadoop_hdfs_namenode]</value>
+          <value>recipe[hadoop::hadoop_yarn_resourcemanager]</value>
+          <value>recipe[hadoop::hadoop_mapreduce_historyserver]</value>
+        </property>
+      </properties>
+      <nodeHasRelations name="cloudify.relationships.contained_in" targetNamespace="master"/>
+      <nodeHasRelations name="stack_on_config" targetNamespace="config"/>
+    </nodeTemplate>
+    <nodeTemplate id="worker_stack" type="chef_node">
+      <properties>
+        <property name="version"/>
+        <property name="chef_server_url"/>
+        <property name="environment"/>
+        <property name="validation_client_name"/>
+        <property name="validation_client_name"/>
+        <property name="node_name_prefix"/>
+        <property name="node_name_suffix"/>
+        <property name="attributes"/>
+        <property name="runlists"/>
+        <property name="chef_cookbooks">
+          <value>recipe[apt::default]</value>
+          <value>recipe[java::default]</value>
+          <value>recipe[hadoop::hadoop_hdfs_datanode]</value>
+          <value>recipe[hadoop::hadoop_yarn_nodemanager]</value>
+        </property>
+      </properties>
+      <nodeHasRelations name="cloudify.relationships.contained_in" targetNamespace="worker"/>
+      <nodeHasRelations name="stack_on_config" targetNamespace="config"/>
+    </nodeTemplate>
+    <hasInputs name="chef_version" description="default description">
+      <value>defaultValue</value>
+    </hasInputs>
+    <hasInputs name="chef_server" description="Default description">
+      <value>defaultValue</value>
+    </hasInputs>
+    <hasoutPuts name="mapred_jobhistory">
+      <value>master_stack</value>
+      <value>chef_attributes</value>
+      <value>hadoop</value>
+      <value>mapred_site</value>
+      <value>mapreduce.jobhistory.address</value>
+    </hasoutPuts>
+    <hasoutPuts name="mapred_jobhistory_webui">
+      <value>master_stack</value>
+      <value>chef_attributes</value>
+      <value>hadoop</value>
+      <value>mapred_site</value>
+      <value>mapreduce.jobhistory.webapp.address</value>
+    </hasoutPuts>
+    <hasoutPuts name="mapred_job_tracker">
+      <value>master_stack</value>
+      <value>chef_attributes</value>
+      <value>hadoop</value>
+      <value>mapred_site</value>
+      <value>mapred.job.tracker</value>
+    </hasoutPuts>
+    <hasoutPuts name="master_ip">
+      <value>config</value>
+      <value>master_ip</value>
+    </hasoutPuts>
+    <hasoutPuts name="worker_ips">
+      <value>config</value>
+      <value>worker_ips</value>
+    </hasoutPuts>
+  </topologyTemplate>
+  <hasImports>
+    <value>http://www.getcloudify.org/spec/cloudify/3.3m4/types.yaml</value>
+    <value>https://raw.githubusercontent.com/buhanec/cloudify-chef-plugin/devel/plugin.yaml</value>
+    <value>https://raw.githubusercontent.com/buhanec/cloudify-flexiant-plugin/3.3m2/plugin.yaml</value>
+  </hasImports>
+</_12:TServiceTemplate>

@@ -1,5 +1,5 @@
--- @path oryxTOSCA=/DiceSeptember/model/TOSCA/_12.ecore
--- @path OryxDDSM=/DiceSeptember/model/DDSM-oryx/Cloud.ecore
+-- @path oryxTOSCA=/DiceModelingProject/model/TOSCA/_12.ecore
+-- @path OryxDDSM=/DiceModelingProject/model/DDSM-oryx/Cloud.ecore
 
 module OryxDDSM2TOSCA;
 create OUT : oryxTOSCA from IN : OryxDDSM;
@@ -77,7 +77,7 @@ lazy rule getOryxRunner{
 		t: oryxTOSCA!TNodeTemplate(
 			
 		id <- i.name,		
-		name <- i.name,
+		
 		--nodeHasInterface <- thisModule.getMasterNodeConfigInterface(i),-- interfaces are commented by Xlab request
 		type <- i.type,
 		nodeHasRelations <-i.referenceNodeHasRelations() -> collect(rel| thisModule.getMasterNodeConfigRelationShips(rel))
@@ -94,15 +94,13 @@ lazy rule getMasterNodechef{
 		t: oryxTOSCA!TNodeTemplate(
 			
 		id <- i.name ,		
-		name <- i.name,
+		
 		--nodeHasInterface <- thisModule.getMasterNodeConfigInterface(i),
 		type <- i.type,
 		nodeHasRelations <-i.referenceNodeHasRelations() -> collect(rel| thisModule.getMasterNodeConfigRelationShips(rel)),
 		properties  <- thisModule.getChefNodePropertiesType(i)
 		
-		--**************
-					
-			
+				
 		)
 }
 
@@ -245,7 +243,7 @@ lazy rule getMasterNodeConfigNode{
 		t: oryxTOSCA!TNodeTemplate(
 			
 		id <- i.name ,		
-		name <- i.name,
+		
 		--nodeHasInterface <- thisModule.getMasterNodeConfigInterface(i),
 		type <- i.type,
 		nodeHasRelations <-i.referenceNodeHasRelations() -> collect(rel| thisModule.getMasterNodeConfigRelationShips(rel))
@@ -357,7 +355,7 @@ lazy rule getSlaveNodeTemplate{
 		t: oryxTOSCA!TNodeTemplate(
 			
 		id <- i.name,		
-		name <- i.name,
+	
 		type <- i.slaveType,
 	    properties <- thisModule.getSlaveNodePropertiesType(i)
 			
@@ -414,7 +412,7 @@ lazy rule getMasterNodeTemplate{
 		t: oryxTOSCA!TNodeTemplate(
 			
 		id <- i.name ,		
-		name <- i.name,
+		
 		type <- i.masterType,
 		properties <- thisModule.getMasterNodePropertiesType(i)
 			

@@ -1,0 +1,445 @@
+-- @path DDSM=/DiceModelingProject/model/DDSM-posidonia/Cloud.ecore
+-- @path TOSCA=/DiceModelingProject/model/TOSCA/_12.ecore
+
+module PosidoniaDDSM2TOSCA;
+create OUT : TOSCA from IN : DDSM;
+
+
+rule PosiDDSM2TOSCA{	
+	from 
+		s: DDSM!Posi_DDSM
+	to 
+		t: TOSCA!TServiceTemplate(
+			id <- s.id,
+			name <- s.type,
+			hasImports <- thisModule.getimports(s),
+			topologyTemplate <- thisModule.getTopologyTemplate(s)
+			--hasRelationship <- s.referenceRelationships() ->  collect(relashtion | thisModule.getserviceRelationShips(relashtion)) --tins part is commented as Xlab decided to put it into their library
+			)
+}
+
+helper context DDSM!Posi_DDSM def: referenceoutputs(): Sequence (DDSM!output) = self.hasoutputs.asSequence();
+helper context DDSM!Posi_DDSM def: reference(): Sequence (DDSM!input) = self.hasinputs.asSequence();
+lazy rule getTopologyTemplate{	
+	from 
+		i: DDSM!Posi_DDSM
+	to 
+		t: TOSCA!TTopologyTemplate(
+			
+			hasInputs <- i.reference() ->  collect(inp | thisModule.getinputs(inp)),
+			nodeTemplate <- thisModule.getServerNodeTemplate(i.hasLinuxServer1),
+			nodeTemplate <- thisModule.getServer1NodeConfigNode(i.hasLinuxServer1.contains_config),
+			nodeTemplate <- thisModule.getServerNodeTemplate(i.hasLinuxServer2),
+		
+			nodeTemplate <- thisModule.getServer1Nodechef(i.hasLinuxServer1.contains_server1_chef),
+			nodeTemplate <- thisModule.getServer1Nodechef(i.hasLinuxServer2.contains_server2_chef),			
+			hasoutPuts <- i.referenceoutputs() -> collect(out | thisModule.getoutputs(out))			
+		)
+}
+
+lazy rule getServer1Nodechef{
+	from 
+		i : DDSM!master_chef
+	to 
+		t: TOSCA!TNodeTemplate(
+			
+		id <- i.name ,		
+		
+		-- interfaces is commented as Xlab requested
+		type <- i.type,
+		--nodeHasRelations <-i.referenceNodeHasRelations() -> collect(rel| thisModule.getMasterNodeConfigRelationShips(rel)),
+		properties  <- thisModule.getChefNodePropertiesType(i)		
+				
+		)
+}
+
+lazy rule getChefNodePropertiesType{
+	from 
+		i : DDSM!server1_chef
+	to 
+		t: TOSCA!PropertiesType(
+			
+		property <-  thisModule.getchefNodePropertyversion(i),
+		property <-  thisModule.getchefNodePropertychef_server_url(i),
+		property <-  thisModule.getchefNodePropertyenvironment(i),
+		property <-  thisModule.getchefNodePropertyvalidation_client_name(i),
+		
+		property <-  thisModule.getchefNodePropertyvalidation_key(i),
+		property <-  thisModule.getchefNodePropertynode_name_prefix(i),
+		property <-  thisModule.getchefNodePropertynode_name_suffix(i),
+		property <-  thisModule.getchefNodePropertyattributes(i),
+		
+		property <-  thisModule.getchefNodePropertyrunlists(i),
+		property <-  thisModule.getchefNodePropertychefCookBooks(i)		
+			
+		)
+}
+
+
+
+lazy rule getchefNodePropertyversion{
+	from 
+		i : DDSM!server1_chef
+	to 
+	j: TOSCA!TProperty(			
+		name <- 'version',
+		value <- i.version
+		)
+}
+
+lazy rule getchefNodePropertychef_server_url{
+	from 
+		i : DDSM!server1_chef
+	to 
+	j: TOSCA!TProperty(			
+		name <- 'chef_server_url',
+		value <- i.chef_server_url
+		)
+}
+
+
+lazy rule getchefNodePropertyenvironment{
+	from 
+		i : DDSM!server1_chef
+	to 
+	j: TOSCA!TProperty(			
+		name <- 'environment',
+		value <- i.environment
+		)
+}
+
+lazy rule getchefNodePropertyvalidation_client_name{
+	from 
+		i : DDSM!server1_chef
+	to 
+	j: TOSCA!TProperty(			
+		name <- 'validation_client_name',
+		value <- i.validation_client_name
+		)
+}
+
+
+lazy rule getchefNodePropertyvalidation_key{
+	from 
+		i : DDSM!server1_chef
+	to 
+	j: TOSCA!TProperty(			
+		name <- 'validation_client_name',
+		value <- i.validation_key
+		)
+}
+
+lazy rule getchefNodePropertynode_name_prefix{
+	from 
+		i : DDSM!server1_chef
+	to 
+	j: TOSCA!TProperty(			
+		name <- 'node_name_prefix',
+		value <- i.node_name_prefix
+		)
+}
+
+
+lazy rule getchefNodePropertynode_name_suffix{
+	from 
+		i : DDSM!server1_chef
+	to 
+	j: TOSCA!TProperty(			
+		name <- 'node_name_suffix',
+		value <- i.node_name_suffix
+		)
+}
+
+
+lazy rule getchefNodePropertyattributes{
+	from 
+		i : DDSM!server1_chef
+	to 
+	j: TOSCA!TProperty(			
+		name <- 'attributes',
+		value <- i.attributes
+		)
+}
+
+lazy rule getchefNodePropertyrunlists{
+	from 
+		i : DDSM!server1_chef
+	to 
+	j: TOSCA!TProperty(			
+		name <- 'runlists',
+		value <- i.runlists
+		)
+}
+
+
+lazy rule getchefNodePropertychefCookBooks{
+	from 
+		i : DDSM!server1_chef
+	to 
+	j: TOSCA!TProperty(			
+		name <- 'chef_cookbooks',		
+		value <- i.chef_cook_books -> collect(book | book.toString())
+		)
+}
+
+
+
+
+
+
+
+helper context DDSM!config def: referenceNodeHasRelations(): DDSM!relation = self.relationships;
+lazy rule getServer1NodeConfigNode{
+	from 
+		i : DDSM!config
+	to 
+		t: TOSCA!TNodeTemplate(
+			
+		id <- i.name ,		
+		
+		--nodeHasInterface <- thisModule.getMasterNodeConfigInterface(i),  -- as XLab wants to put interfaces in their library this is commented
+		type <- i.type,
+		nodeHasRelations <-i.referenceNodeHasRelations() -> collect(rel| thisModule.getServer1NodeConfigRelationShips(rel))						
+			
+		)
+}
+
+lazy rule getoutputs{
+	from 
+		reference : DDSM!output
+	to 
+		t: TOSCA!TOutputTemplate(
+			
+			name <- reference.name,
+			value <- reference.value
+			
+		)
+}
+
+
+
+lazy rule getServer1NodeConfigRelationShips{
+	from 
+		i : DDSM!relation
+	to 
+		t: TOSCA!TRelationshipType(
+			
+		name <- i.type,
+		targetNamespace <- i.target
+			
+		)
+}
+
+
+
+lazy rule getServerNodeTemplate{
+	from 
+		i : DDSM!Server1
+	to 
+		t: TOSCA!TNodeTemplate(
+			
+		id <- i.name ,		
+		
+		type <- i.type.toString(),
+		properties <- thisModule.getServerPropertiesType(i)
+			
+		)
+}
+
+lazy rule getServerPropertiesType{
+	from 
+		i : DDSM!Server1
+	to 
+		t: TOSCA!PropertiesType(
+			
+		property <-  thisModule.getServerNodePropertynet_uuid(i),
+		property <-  thisModule.getServerNodePropertyCpu(i),
+		property <-  thisModule.getServerNodePropertyRam_amount(i),
+		property <-  thisModule.getServerNodePropertykey_uuid(i),
+		
+		property <-  thisModule.getServerNodePropertywait_started_timeout(i),
+		property <-  thisModule.getServerNodePropertywait_started_interval(i),
+		property <-  thisModule.getServerNodePropertyPassword(i),
+		property <-  thisModule.getServerNodePropertycustomer(i),
+		
+		property <-  thisModule.getServerNodePropertyapi_uuid(i),
+		
+		property <-  thisModule.getServerNodePropertyserver_type(i),
+		property <-  thisModule.getServerNodePropertyurl(i),
+		property <-  thisModule.getServerNodePropertyimage_uuid(i),
+		property <-  thisModule.getServerNodePropertyce_certificate(i)
+			
+			
+		)
+}
+
+
+lazy rule getServerNodePropertynet_uuid{
+	from 
+		i : DDSM!Server1
+	to 
+	j: TOSCA!TProperty(			
+		name <- 'net_uuid',
+		value <- i.net_uuid
+		)
+}
+
+lazy rule getServerNodePropertyCpu{
+	from 
+		i : DDSM!Server1
+	to 
+	j: TOSCA!TProperty(			
+		name <- 'cpu_count',
+		value <- i.cpu
+		)
+}
+
+lazy rule getServerNodePropertyRam_amount{
+	from 
+		i : DDSM!Server1
+	to 
+	j: TOSCA!TProperty(			
+		name <- 'ram_amount',
+		value <- i.ram
+		)
+}
+
+lazy rule getServerNodePropertykey_uuid{
+	from 
+		i : DDSM!Server1
+	to 
+	j: TOSCA!TProperty(			
+		name <- 'key_uuid',
+		value <- i.key_uuid
+		)
+}
+
+lazy rule getServerNodePropertywait_started_timeout{
+	from 
+		i : DDSM!Server1
+	to 
+	j: TOSCA!TProperty(			
+		name <- 'wait_started_timeout',
+		value <- i.wait_started_timeout
+		)
+}
+
+lazy rule getServerNodePropertywait_started_interval{
+	from 
+		i : DDSM!Server1
+	to 
+	j: TOSCA!TProperty(			
+		name <- 'wait_started_interval',
+		value <- i.wait_started_interval
+		)
+}
+
+lazy rule getServerNodePropertyPassword{
+	from 
+		i : DDSM!Server1
+	to 
+	j: TOSCA!TProperty(			
+		name <- 'password',
+		value <- i.password
+		)
+}
+
+lazy rule getServerNodePropertycustomer{
+	from 
+		i : DDSM!Server1
+	to 
+	j: TOSCA!TProperty(			
+		name <- 'customer',
+		value <- i.customer
+		)
+}
+
+lazy rule getServerNodePropertyimage_uuid{
+	from 
+		i : DDSM!Server1
+	to 
+	j: TOSCA!TProperty(			
+		name <- 'image_uuid',
+		value <- i.image_uuid
+		)
+}
+
+
+lazy rule getServerNodePropertyapi_uuid{
+	from 
+		i : DDSM!Server1
+	to 
+	j: TOSCA!TProperty(			
+		name <- 'api_uuid',
+		value <- i.api_uuid
+		)
+}
+
+
+
+lazy rule getServerNodePropertyurl{
+	from 
+		i : DDSM!Server1
+	to 
+	j: TOSCA!TProperty(			
+		name <- 'url',
+		value <- i.url
+		)
+}
+
+
+lazy rule getServerNodePropertyce_certificate{
+	from 
+		i : DDSM!Server1
+	to 
+	j: TOSCA!TProperty(			
+		name <- 'ce_cert',
+		value <- i.ce_certificate
+		)
+}
+
+
+lazy rule getServerNodePropertyserver_type{
+	from 
+		i : DDSM!Server1
+	to 
+	j: TOSCA!TProperty(			
+		name <- 'server_type',
+		value <- i.server_type
+		)
+}
+
+
+
+
+
+
+
+lazy rule getinputs{
+	from 
+		reference : DDSM!input
+	to 
+		t: TOSCA!TInputTemplate(
+			
+			name <- reference.name,
+			value <- reference.value,
+			description <- reference.description
+				
+			
+		)
+}
+
+
+
+
+lazy rule getimports{	
+	from 
+		i: DDSM!Posi_DDSM
+	to 
+		t: TOSCA!TimportTemplate(
+			
+			value <- i.imports			
+		)
+}
+
+

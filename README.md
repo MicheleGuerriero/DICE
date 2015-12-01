@@ -1,2 +1,0 @@
-# DICE
-DICE project repository

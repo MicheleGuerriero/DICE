@@ -1,0 +1,74 @@
+Imports: ['http://www.getcloudify.org/spec/cloudify/3.3m4/types.yaml', 'https://raw.githubusercontent.com/buhanec/cloudify-chef-plugin/devel/plugin.yaml',
+  'https://raw.githubusercontent.com/buhanec/cloudify-flexiant-plugin/3.3m2/plugin.yaml']
+inputs:
+  chef_server: {default: '{}'}
+  chef_validation_user: {default: '{}'}
+  chef_version: {default: '{}', description: ''}
+node_templates:
+  config:
+    relationships:
+    - {target: server1, type: config}
+    type: config type
+  linuxServer1:
+    properties:
+      api_uuid: []
+      ce_cert: []
+      cpu_count: []
+      customer: []
+      image_uuid: []
+      key_uuid: []
+      net_uuid: [netuuidvalue]
+      password: []
+      ram_amount: []
+      server_type: []
+      url: []
+      wait_started_interval: []
+      wait_started_timeout: []
+    type: platform
+  linuxServer2:
+    properties:
+      api_uuid: []
+      ce_cert: []
+      cpu_count: []
+      customer: []
+      image_uuid: []
+      key_uuid: []
+      net_uuid: []
+      password: []
+      ram_amount: []
+      server_type: []
+      url: []
+      wait_started_interval: []
+      wait_started_timeout: []
+    type: platform
+  server1_chef:
+    properties:
+      attributes: []
+      chef_cookbooks: ['recipe[apt::default]', 'recipe[java::default]', 'recipe[server1::default]',
+        'recipe[RabitMQ::default]', 'recipe[hadoop::spark_master]', 'recipe[hadoop::hadoop_hdfs_namenode]',
+        'recipe[hadoop::hadoop_yarn_resourcemanager]']
+      chef_server_url: []
+      environment: []
+      node_name_prefix: []
+      node_name_suffix: []
+      runlists: []
+      validation_client_name: []
+      version: []
+    type: server1_chef
+  server2_chef:
+    properties:
+      attributes: []
+      chef_cookbooks: ['recipe[apt::default]', 'recipe[java::default]', 'recipe[server2::default]']
+      chef_server_url: []
+      environment: []
+      node_name_prefix: []
+      node_name_suffix: []
+      runlists: []
+      validation_client_name: []
+      version: []
+    type: server2_chef
+outputs:
+  PMS_IP_Address: {}
+  Server2IPaddress: {}
+  server1IPaddress: {}
+tosca_definitions_version: cloudify_dsl_1_0
