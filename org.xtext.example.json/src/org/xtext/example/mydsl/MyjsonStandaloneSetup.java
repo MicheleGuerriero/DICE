@@ -4,13 +4,12 @@
 package org.xtext.example.mydsl;
 
 /**
- * Initialization support for running Xtext languages 
- * without equinox extension registry
+ * Initialization support for running Xtext languages without equinox extension
+ * registry
  */
-public class MyjsonStandaloneSetup extends MyjsonStandaloneSetupGenerated{
+public class MyjsonStandaloneSetup extends MyjsonStandaloneSetupGenerated {
 
 	public static void doSetup() {
 		new MyjsonStandaloneSetup().createInjectorAndDoEMFRegistration();
 	}
 }
-
