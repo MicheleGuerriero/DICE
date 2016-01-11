@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="OryxDTSM" nsURI="platform:/resource/OryxModelTransformation/TargerMetaModel(DiceDTSM)/OryxDTSM.ecore"
-    nsPrefix="OryxDTSM">
+    nsPrefix="dtsm.oryx">
   <eClassifiers xsi:type="ecore:EClass" name="ServingLayer">
+    <eAnnotations source="http://es.unizar.disco/dice/profiles/generator">
+      <details key="description" value="This layer exposed the necessary APIs to ask queries on the framework. &#xA;Also, it is used to inject the primary inputs to Oryx. ITS MAIN CHARACTERISTICS ARE THE Application resources: in which specifies where to load applica- tion resources, which are comma separated Java packages ApplicationResources&#xA;which specify where to load application resources, which are comma separated Java packages,&#xA;Memory specify the amount of memory that should be dedicated to each serving layer and minLoadModelFraction which specify the fraction of the input model that should be used for the training of machine learning algorithms."/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="oryx"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ModelManagerClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="SerUseKf" eType="#//Kafka"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="SerManageMI" eType="#//MlSpecification"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="SerManageMI" eType="#//MLSpecification"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="SpeAPI" eType="#//APISpecification"
         containment="true"/>
@@ -22,6 +25,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="minModelLoadFraction" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="APISpecification">
+    <eAnnotations source="http://es.unizar.disco/dice/profiles/generator">
+      <details key="description" value="It provides a description of the available Oryx2 API."/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="UserName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Password" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="servingLayerPort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -34,6 +40,9 @@
         defaultValueLiteral="oryx"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="YarnSpecification">
+    <eAnnotations source="http://es.unizar.disco/dice/profiles/generator">
+      <details key="description" value="This is an optional configuration that is used by yarn-based deployment of Oryx 2.0. It is represented mainly by the NoOfInstance attribute, which specify&#xA;the number of serving layer instances to run and by the Cores attribute, which specify the number of cores that should be assigned to each serving layer managed by yarn."/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="yarn_resourcemanager"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="NoOfInstance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -48,6 +57,9 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Kafka">
+    <eAnnotations source="http://es.unizar.disco/dice/profiles/generator">
+      <details key="description" value="The Kafka layer is supposed to be the transportation layer which makes &#xA;it possible for the other three layer to communicate with each other."/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="HasUpdateTopic" lowerBound="1"
         eType="#//updateTopic" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -59,6 +71,9 @@
         eType="#//inputTopic" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="inputTopic">
+    <eAnnotations source="http://es.unizar.disco/dice/profiles/generator">
+      <details key="description" value="It specify an available Topic in the Kafke communication channel."/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="kafka"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="KafkaConsumerDescription"
@@ -72,6 +87,9 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="updateTopic">
+    <eAnnotations source="http://es.unizar.disco/dice/profiles/generator">
+      <details key="description" value="It represents and update topic in the Kafka communication channel."/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="kafka"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="KafkaProducerDescription"
@@ -85,12 +103,15 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SpeedLayer">
+    <eAnnotations source="http://es.unizar.disco/dice/profiles/generator">
+      <details key="description" value="The role of speed layer is to provide an approximation based on the data stream given by Kafka topics. It uses spark streaming to perform some of its calculations that are intended to happen on the order of seconds."/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="modelManagerClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="oryx"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="UiPort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="DynamicAlloc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="SpeUseMI" eType="#//MlSpecification"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="SpeUseMI" eType="#//MLSpecification"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="SpeUseKaf" eType="#//Kafka"
         containment="true"/>
@@ -100,7 +121,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="SpeedLayerDescription"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MlSpecification">
+  <eClassifiers xsi:type="ecore:EClass" name="MLSpecification">
+    <eAnnotations source="http://es.unizar.disco/dice/profiles/generator">
+      <details key="description" value="This configure the machikne learning algorithm that will be used by the Oryx2 application on its data.&#xA;It is characterized by the following attributes:&#xA;&#x9;- TestFraction: this specify the portion of data to be used as a test.set&#xA;&#x9;- Candidate: it specifies the number of models that should be chosen as candidates among many as the best ones&#xA;&#x9;- Parallelism: it sets the degree of parallelism of the algorithm"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="TestFraction" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Candidate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Parallelism" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -110,6 +134,9 @@
         defaultValueLiteral="oryx"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StorgeSpecification">
+    <eAnnotations source="http://es.unizar.disco/dice/profiles/generator">
+      <details key="description" value="Batch layer has an HDFS storage to store historical Data."/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="hdfs"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="InputDirectory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -119,9 +146,12 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="SourceProperties" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BatchLayer">
+    <eAnnotations source="http://es.unizar.disco/dice/profiles/generator">
+      <details key="description" value="This layer computes those results which are called models from the given historical data and the previous results. It is a long running operation and it usually happens once a day or more."/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="BatchHasStorage" eType="#//StorgeSpecification"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="BatchUseMI" eType="#//MlSpecification"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="BatchUseMI" eType="#//MLSpecification"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="BatchUseKaf" eType="#//Kafka"
         containment="true"/>
@@ -149,7 +179,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="computeClassPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ConfSpecification" eSuperTypes="#//APISpecification #//YarnSpecification #//MlSpecification">
+  <eClassifiers xsi:type="ecore:EClass" name="ConfSpecification" eSuperTypes="#//APISpecification #//YarnSpecification #//MLSpecification">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ConfigurationDescription"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>

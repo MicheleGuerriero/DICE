@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="PosiDTSM" nsURI="platform:/resource/PosidoniaTransformation/TargerMetaModel(DiceDTSM)/PosiDTSM.ecore"
-    nsPrefix="PosiDTSM">
+    nsPrefix="dtsm.posidonia">
   <eClassifiers xsi:type="ecore:EClass" name="SmartRadioSR162">
-    <eAnnotations/>
+    <eAnnotations source="http://es.unizar.disco/dice/profiles/generator">
+      <details key="descripton" value="One of the AIS receiver."/>
+    </eAnnotations>
     <eOperations name="Start"/>
     <eOperations name="End"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="PowerSupplyRange" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -22,6 +24,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Channelspacing" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ComarSLR200">
+    <eAnnotations source="http://es.unizar.disco/dice/profiles/generator">
+      <details key="description" value="One of the AIS receiver."/>
+    </eAnnotations>
     <eOperations name="Start"/>
     <eOperations name="End"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="PowerSupplyRange" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -38,6 +43,9 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RabbitMQ">
+    <eAnnotations source="http://es.unizar.disco/dice/profiles/generator">
+      <details key="description" value="RabbitMQ is a well known and popular message broker."/>
+    </eAnnotations>
     <eOperations name="Publish"/>
     <eOperations name="Subscribe"/>
     <eOperations name="bind"/>
@@ -98,6 +106,9 @@
   <eClassifiers xsi:type="ecore:EEnum" name="FusionMethod"/>
   <eClassifiers xsi:type="ecore:EClass" name="LogReader"/>
   <eClassifiers xsi:type="ecore:EClass" name="CEP">
+    <eAnnotations source="http://es.unizar.disco/dice/profiles/generator">
+      <details key="description" value="CEP is a complex event processor with geospatial features, that&#xD;analyzes AISSentence to detect AISEvent."/>
+    </eAnnotations>
     <eOperations name="Anchor"/>
     <eOperations name="Dock"/>
     <eOperations name="zone"/>
@@ -113,6 +124,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="f5Name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EvenIntegrator" eSuperTypes="#//EventDispacher">
+    <eAnnotations source="http://es.unizar.disco/dice/profiles/generator">
+      <details key="description" value="The event integrator is the component that joins the real world AISEvents detected by Posidonia Operations."/>
+    </eAnnotations>
     <eOperations name="GetEvent"/>
     <eOperations name="GetData"/>
     <eOperations name="Update"/>
@@ -122,6 +136,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="EIName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PMS">
+    <eAnnotations source="http://es.unizar.disco/dice/profiles/generator">
+      <details key="description" value="is a Port Management System that designed for real-time planning and fully integrated management of major port operations its powerful features business object."/>
+    </eAnnotations>
     <eOperations name="AIStoVTSItegrate"/>
     <eOperations name="ReportGenerate"/>
     <eOperations name="DataExchange"/>
@@ -132,6 +149,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="PName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RDBMS">
+    <eAnnotations source="http://www.obeo.fr/dsl/dnc/archetype">
+      <details key="archetype" value="Description"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="InputDirectory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="St2Name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
